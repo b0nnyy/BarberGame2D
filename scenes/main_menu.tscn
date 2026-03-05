@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://g4int7lrhhm"]
+
+[ext_resource type="Script" uid="uid://bkng0dhca31bx" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+
+[node name="Control" type="Control" unique_id=850465137]
+layout_mode = 3
+anchor_left = 0.411
+anchor_top = 0.333
+anchor_right = 0.411
+anchor_bottom = 0.333
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+script = ExtResource("1_l6cm7")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=139566373]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1754791962]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=222097421]
+layout_mode = 2
+text = "BarberGame"
+
+[node name="przycisk start" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1944687695]
+layout_mode = 2
+text = "Rozpocznij grę"
+
+[node name="przycisk tabela wynikow" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1462501597]
+layout_mode = 2
+text = "Tabela wyników"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/przycisk start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/przycisk tabela wynikow" to="." method="_on_scores_pressed"]
