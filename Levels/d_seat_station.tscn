@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dtvddgm3h4gnm"]
+
+[ext_resource type="Script" uid="uid://0fmg1m60p7xl" path="res://Levels/d_seat_station.gd" id="1_fo32m"]
+[ext_resource type="Texture2D" uid="uid://u02m4cr4ody7" path="res://Art/objects/krzeslo.png" id="1_r35ve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r35ve"]
+size = Vector2(20, 27)
+
+[node name="SeatStation" type="Node2D" unique_id=1651440859 groups=["seat_stations"]]
+script = ExtResource("1_fo32m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1621475699]
+texture = ExtResource("1_r35ve")
+
+[node name="SeatPoint" type="Marker2D" parent="." unique_id=39408632]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2079333695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=664881240]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_r35ve")

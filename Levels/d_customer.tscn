@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://lxtn7pg42wsy"]
+
+[ext_resource type="Script" uid="uid://cb04iqt6nt1ui" path="res://Levels/d_customer.gd" id="1_04txp"]
+[ext_resource type="Texture2D" uid="uid://bia4xnnfkp7ya" path="res://icon.svg" id="1_rms7o"]
+
+[node name="Customer" type="CharacterBody2D" unique_id=4736501]
+script = ExtResource("1_04txp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=215222880]
+position = Vector2(0, 3)
+scale = Vector2(0.671875, 0.671875)
+texture = ExtResource("1_rms7o")
