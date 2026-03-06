@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dqhe7f6uf1jm4"]
+
+[ext_resource type="Script" uid="uid://c871e22dw5tvq" path="res://scenes/character_select.gd" id="1_x8mhf"]
+
+[node name="Control" type="Control" unique_id=1198882514]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x8mhf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1484358850]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wybierz postac" type="Label" parent="VBoxContainer" unique_id=830800669]
+layout_mode = 2
+text = "Wybierz postać"
+
+[node name="Lukasz" type="Button" parent="VBoxContainer" unique_id=2106338220]
+layout_mode = 2
+text = "Lukasz"
+
+[node name="Patryk" type="Button" parent="VBoxContainer" unique_id=245453844]
+layout_mode = 2
+text = "Patryk"
+
+[node name="Shimmy" type="Button" parent="VBoxContainer" unique_id=377643505]
+layout_mode = 2
+text = "Shimmy"
+
+[node name="Igor" type="Button" parent="VBoxContainer" unique_id=1345355498]
+layout_mode = 2
+text = "Igor"
+
+[node name="Dzony" type="Button" parent="VBoxContainer" unique_id=779339517]
+layout_mode = 2
+text = "Dzony"
+
+[node name="Rozpocznij grę" type="Button" parent="VBoxContainer" unique_id=1028368211]
+layout_mode = 2
+text = "Rozpocznij grę"
+
+[connection signal="pressed" from="VBoxContainer/Lukasz" to="." method="_on_Lukasz_pressed"]
+[connection signal="pressed" from="VBoxContainer/Patryk" to="." method="_on_Patryk_pressed"]
+[connection signal="pressed" from="VBoxContainer/Shimmy" to="." method="_on_Shimmy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Igor" to="." method="_on_Igor_pressed"]
+[connection signal="pressed" from="VBoxContainer/Dzony" to="." method="_on_Dzony_pressed"]
+[connection signal="pressed" from="VBoxContainer/Rozpocznij grę" to="." method="_on_start_pressed"]
