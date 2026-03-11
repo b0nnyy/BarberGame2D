@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://css7jmvro1tuj"]
+
+[ext_resource type="Texture2D" uid="uid://b8cqr7t2xymwb" path="res://Art/icons/nozyczki.png" id="1_1j2dh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1j2dh"]
+radius = 11.0
+
+[node name="Nozyczki" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+
+[node name="Nozyczki" type="Sprite2D" parent="." unique_id=2118391727]
+texture = ExtResource("1_1j2dh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=620289773]
+shape = SubResource("CircleShape2D_1j2dh")

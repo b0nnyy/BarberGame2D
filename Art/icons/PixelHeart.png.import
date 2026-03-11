@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8sroueh7bxy7"
-path="res://.godot/imported/bzrytwa.png-c1553b79d4fbedfd637b6818030921de.ctex"
+uid="uid://dy713xarn3efq"
+path="res://.godot/imported/PixelHeart.png-b353531cc72142b22d08bed7969f9348.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/icons/bzrytwa.png"
-dest_files=["res://.godot/imported/bzrytwa.png-c1553b79d4fbedfd637b6818030921de.ctex"]
+source_file="res://Art/icons/PixelHeart.png"
+dest_files=["res://.godot/imported/PixelHeart.png-b353531cc72142b22d08bed7969f9348.ctex"]
 
 [params]
 

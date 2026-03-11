@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ccwwktg4rty7f" path="res://Art/Test Character/player-sprite-sheet.png" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://bsqgip6csl1hp" path="res://Characters/player.gd" id="1_eovys"]
+[ext_resource type="Texture2D" uid="uid://dy713xarn3efq" path="res://Art/icons/PixelHeart.png" id="3_vb825"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mj4t"]
 radius = 14.0
@@ -131,6 +132,9 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_mevwr")
 states/Walk/position = Vector2(558, 59)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_iga2k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_y0e2x"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_8an5f")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb825"]
+size = Vector2(32, 59)
+
 [node name="Player" type="CharacterBody2D" unique_id=1059542811]
 script = ExtResource("1_eovys")
 
@@ -153,3 +157,45 @@ tree_root = SubResource("AnimationNodeStateMachine_0qaj4")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.0029256344, -0.0052132607)
 parameters/Walk/blend_position = Vector2(-0.0005851388, -0.015639782)
+
+[node name="HeartBar" type="CanvasLayer" parent="." unique_id=675894840]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HeartBar" unique_id=1052362281]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart" type="TextureRect" parent="HeartBar/HBoxContainer" unique_id=1488892172]
+custom_minimum_size = Vector2(29.855, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HeartBar/HBoxContainer/Heart" unique_id=110182189]
+position = Vector2(15, 16)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_vb825")
+
+[node name="Heart3" type="TextureRect" parent="HeartBar/HBoxContainer" unique_id=2014233498]
+custom_minimum_size = Vector2(29.855, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HeartBar/HBoxContainer/Heart3" unique_id=816772137]
+position = Vector2(15, 16)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_vb825")
+
+[node name="Heart2" type="TextureRect" parent="HeartBar/HBoxContainer" unique_id=1673574052]
+custom_minimum_size = Vector2(47.21, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HeartBar/HBoxContainer/Heart2" unique_id=418927845]
+position = Vector2(15, 16)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_vb825")
+
+[node name="Hand" type="Marker2D" parent="." unique_id=574260583]
+position = Vector2(0, -50)
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=1716929620]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1631153468]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vb825")

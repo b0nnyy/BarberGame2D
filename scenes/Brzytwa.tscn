@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://chnqtag5krrx4"]
+
+[ext_resource type="Texture2D" uid="uid://c8sroueh7bxy7" path="res://Art/icons/brzytwa.png" id="1_nfg71"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfg71"]
+radius = 19.026299
+
+[node name="Brzytwa" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+
+[node name="Brzytwa" type="Sprite2D" parent="." unique_id=712987387]
+texture = ExtResource("1_nfg71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1711737721]
+shape = SubResource("CircleShape2D_nfg71")

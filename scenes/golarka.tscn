@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bdjeqpyp472ig"]
+
+[ext_resource type="Texture2D" uid="uid://py7jchys7t2m" path="res://Art/icons/golarka.png" id="1_4lpj5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lpj5"]
+radius = 16.0
+
+[node name="Golarka" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+
+[node name="Golarka" type="Sprite2D" parent="." unique_id=1863550462]
+position = Vector2(-2, -1)
+texture = ExtResource("1_4lpj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591706885]
+shape = SubResource("CircleShape2D_4lpj5")
