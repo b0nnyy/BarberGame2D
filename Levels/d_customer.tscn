@@ -10,6 +10,10 @@
 radius = 18.0
 height = 78.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tahi"]
+radius = 19.0
+height = 78.0
+
 [node name="Customer" type="CharacterBody2D" unique_id=4736501]
 script = ExtResource("1_04txp")
 haircut_icon = ExtResource("2_453eh")
@@ -27,3 +31,11 @@ position = Vector2(0, -60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269247081]
 shape = SubResource("CapsuleShape2D_453eh")
+
+[node name="ItemSlot" type="Marker2D" parent="." unique_id=425182007]
+position = Vector2(0, -48)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1036294321 groups=["Interactable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=444727056]
+shape = SubResource("CapsuleShape2D_0tahi")

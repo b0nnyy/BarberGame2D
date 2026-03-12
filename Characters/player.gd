@@ -23,23 +23,64 @@ func _physics_process(_delta):
 @onready var hand = $Hand
 @onready var interaction_zone = $InteractionZone
 
-var held_item = null # Tu będziemy przechowywać referencję do przedmiotu
+var held_item = null 
 
 func _input(event):
-	if event.is_action_pressed("Interact"): # Zmień na swoją nazwę akcji
-		if held_item:
+	if event.is_action_pressed("use_item"):
+		attempt_pick_up()
+		var areas = interaction_zone.get_overlapping_areas()
+		
+		var target = null
+		
+		for area in areas:
+			if area.is_in_group("Interactable"):
+				target = area
+				break
+		
+		if target:
+			# UŻYWANIE na kliencie
+			if held_item != null and target.has_method("take_item"):
+				target.take_item(held_item)
+			# PODNOSZENIE z ziemi
+			elif held_item == null and not target.has_method("take_item"):
+				pick_up_item(target)
+			# Jeśli trzymasz coś innego niż chce klient, nic się nie dzieje (i to jest ok)
+		elif held_item != null:
 			drop_item()
-		else:
-			attempt_pick_up()
+			
 
 func attempt_pick_up():
-	# Pobieramy wszystkie Area2D w zasięgu gracza
 	var areas = interaction_zone.get_overlapping_areas()
-	
+	var target = null 
+
+	# Szukamy celu wśród wykrytych obszarów
 	for area in areas:
 		if area.is_in_group("Interactable"):
-			pick_up_item(area)
-			break # Podnosimy tylko pierwszy znaleziony przedmiot
+			var potential_target = null
+			
+			if area.has_method("take_item"): # <-- Poprawione na method
+				potential_target = area
+			elif area.get_parent().has_method("take_item"): # <-- Poprawione na method
+				potential_target = area.get_parent()
+			
+			if potential_target:
+				target = potential_target
+				break
+
+	# LOGIKA INTERAKCJI
+	if target:
+		# 1. Użycie przedmiotu na kliencie
+		if held_item != null and target.has_method("take_item"): # <-- Poprawione na method
+			print("Używam ", held_item.name, " na ", target.name)
+			target.take_item(held_item)
+		
+		# 2. Podniesienie przedmiotu (jeśli nie jest klientem)
+		elif held_item == null and not target.has_method("take_item"): # <-- Poprawione na method
+			pick_up_item(target)
+			
+	# 3. Odłożenie przedmiotu, jeśli klikasz w puste miejsce
+	elif held_item != null:
+		drop_item()
 
 func pick_up_item(item):
 	held_item = item
@@ -80,3 +121,5 @@ func drop_item():
 		
 	print("Upuszczono: ", held_item.name)
 	held_item = null
+	
+	

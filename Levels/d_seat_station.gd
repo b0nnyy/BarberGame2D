@@ -7,6 +7,7 @@ func occupy(customer):
 	is_occupied = true
 	assigned_customer = customer
 
-func free_seat():
+func release():
 	is_occupied = false
 	assigned_customer = null
+	print("Fotel ", name, " jest teraz wolny.")

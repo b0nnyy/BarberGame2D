@@ -7,6 +7,8 @@ extends Node2D
 
 var last_service: String = ""
 
+
+
 func _ready():
 	randomize()
 	call_deferred("start_spawning")
@@ -31,6 +33,7 @@ func spawn_customer():
 	var customer = customer_scene.instantiate()
 	get_parent().add_child(customer)
 	customer.global_position = spawn_point.global_position
+	customer.exit_position = spawn_point.global_position
 
 	var new_service = get_random_service()
 	customer.set_requested_service(new_service)
