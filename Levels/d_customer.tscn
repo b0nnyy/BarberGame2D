@@ -16,7 +16,7 @@ size = Vector2(28, 19)
 script = ExtResource("1_04txp")
 haircut_icon = ExtResource("2_453eh")
 beard_icon = ExtResource("3_0tahi")
-wash_icon = ExtResource("4_s7aux")
+golarka_icon = ExtResource("4_s7aux")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=215222880]
 position = Vector2(-1.9073486e-06, 0)
@@ -32,6 +32,7 @@ position = Vector2(0, -60)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269247081]
 position = Vector2(-2, 7)
 shape = SubResource("CircleShape2D_0tahi")
+disabled = true
 
 [node name="ItemSlot" type="Marker2D" parent="." unique_id=425182007]
 position = Vector2(0, -48)
