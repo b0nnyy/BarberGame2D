@@ -29,6 +29,14 @@ vframes = 2
 visible = false
 position = Vector2(0, -60)
 
+[node name="PatienceBar" type="ProgressBar" parent="." unique_id=108920452]
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+offset_bottom = -25.0
+value = 100.0
+show_percentage = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269247081]
 position = Vector2(-2, 7)
 shape = SubResource("CircleShape2D_0tahi")

@@ -15,14 +15,17 @@ var has_target: bool = false
 var exit_position: Vector2
 var requested_service: String = ""
 var current_work_progress: int = 0
+var patience: float = 100
+var patience_decay: float = 5   
+var is_angry: bool = false
 
 @onready var request_icon = $RequestIcon
+@onready var patience_bar = $PatienceBar
 
 func _ready():
 	request_icon.visible = false
 
 func assign_seat(seat):
-# Jeśli klient już wychodzi (nie jest w kolejce ani nie idzie do niej), zignoruj fotel
 	if current_state != CustomerState.IN_QUEUE and current_state != CustomerState.WALKING:
 		return
 
@@ -34,7 +37,44 @@ func assign_seat(seat):
 func set_requested_service(service_name: String):
 	requested_service = service_name
 
-func _physics_process(_delta):
+func become_angry():
+
+	is_angry = true
+	request_icon.modulate = Color(1,0.3,0.3)
+
+	var t = create_tween()
+	t.set_loops()
+
+	t.tween_property(request_icon,"rotation",0.15,0.1)
+	t.tween_property(request_icon,"rotation",-0.15,0.1)
+
+func leave_angry():
+
+	print("Klient się wkurzył i wychodzi!")
+
+	request_icon.visible = false
+	patience_bar.visible = false
+
+	if target_seat:
+		target_seat.release()
+		target_seat = null
+
+	current_state = CustomerState.EXITING
+	target_position = exit_position
+	has_target = true
+
+func update_patience(delta):
+	patience -= patience_decay * delta
+	patience_bar.value = patience
+	
+	if patience < 40 and not is_angry:
+		become_angry()
+	if patience <= 0:
+		leave_angry()
+
+func _physics_process(delta):
+	if current_state == CustomerState.WAITING:
+		update_patience(delta)
 	if (current_state == CustomerState.WALKING 
 	or current_state == CustomerState.IN_QUEUE 
 	or current_state == CustomerState.EXITING) and has_target:
@@ -67,6 +107,9 @@ func sit_down():
 	show_service_icon()
 	current_state = CustomerState.WAITING
 	print("Customer sat with service: ", requested_service)
+	patience = 100
+	patience_bar.value = patience
+	patience_bar.visible = true
 func show_service_icon():
 
 	request_icon.visible = false
@@ -105,8 +148,6 @@ func take_item(incoming_item):
 
 func perform_work_step():
 	current_work_progress += 1
-	
-	# Pasek postępu (jeśli dodałeś węzeł ProgressBar o nazwie WorkProgress)
 	if has_node("WorkProgress"):
 		$WorkProgress.visible = true
 		$WorkProgress.value = current_work_progress
@@ -120,6 +161,7 @@ func perform_work_step():
 func finish_and_leave():
 	current_work_progress = 0
 	request_icon.visible = false
+	patience_bar.visible = false
 	
 	if target_seat:
 		target_seat.release()

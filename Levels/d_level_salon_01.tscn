@@ -140,12 +140,13 @@ shape = SubResource("RectangleShape2D_k6m37")
 [node name="Markers" type="Node2D" parent="." unique_id=571142081]
 
 [node name="CustomerSpawn" type="Marker2D" parent="Markers" unique_id=1193144420 node_paths=PackedStringArray("spawn_point", "seats", "queue_positions")]
-position = Vector2(810, 948)
+position = Vector2(813, 1010)
 gizmo_extents = 10.2
 script = ExtResource("2_fe7wc")
 customer_scene = ExtResource("3_gqllm")
 spawn_point = NodePath(".")
 seats = [NodePath("../../Seats/SeatStation"), NodePath("../../Seats/SeatStation2"), NodePath("../../Seats/SeatStation3"), NodePath("../../Seats/SeatStation4"), NodePath("../../Seats/SeatStation5")]
+spawn_interval = 3.0
 queue_positions = [NodePath("../../QueuePos1"), NodePath("../../QueuePos2"), NodePath("../../QueuePos3")]
 
 [node name="Seats" type="Node2D" parent="." unique_id=949434074]
