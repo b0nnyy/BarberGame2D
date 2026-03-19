@@ -50,3 +50,13 @@ position = Vector2(0, -48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=444727056]
 position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_s7aux")
+
+[node name="ScorePopup" type="Label" parent="." unique_id=1282105855]
+modulate = Color(0.80909747, 0.300429, 0.44844884, 1)
+offset_left = -10.0
+offset_top = -59.0
+offset_right = 10.0
+offset_bottom = -36.0
+theme_override_colors/font_color = Color(0.90113467, 0.71086794, 3.85046e-07, 1)
+theme_override_constants/outline_size = 4
+text = "+1"

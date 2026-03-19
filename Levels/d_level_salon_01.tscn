@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://css7jmvro1tuj" path="res://scenes/nozyczki.tscn" id="6_fms76"]
 [ext_resource type="PackedScene" uid="uid://bdjeqpyp472ig" path="res://scenes/golarka.tscn" id="7_sluam"]
 [ext_resource type="PackedScene" uid="uid://chnqtag5krrx4" path="res://scenes/Brzytwa.tscn" id="8_hisqs"]
+[ext_resource type="Script" uid="uid://b4tcev7x0j5vm" path="res://Levels/ui_score.gd" id="9_sluam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twtlm"]
 size = Vector2(656, 7)
@@ -196,3 +197,13 @@ gizmo_extents = 5.1
 [node name="QueuePos3" type="Marker2D" parent="." unique_id=933413815]
 position = Vector2(909, 964)
 gizmo_extents = 5.1
+
+[node name="UI_score" type="CanvasLayer" parent="." unique_id=742023099]
+script = ExtResource("9_sluam")
+
+[node name="ScoreLabel" type="Label" parent="UI_score" unique_id=391709054]
+offset_left = 6.0
+offset_top = 30.0
+offset_right = 71.0
+offset_bottom = 53.0
+text = "Score : 0"
