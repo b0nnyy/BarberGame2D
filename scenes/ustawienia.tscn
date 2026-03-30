@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cs7t7s5vcbp1o"]
+
+[ext_resource type="Script" uid="uid://eihfha7n240y" path="res://ustawienia.gd" id="1_01rqy"]
+[ext_resource type="Texture2D" uid="uid://c56y4f3xtc1p" path="res://Art/ikony_menu/SETTINGS BUTTONS.png" id="2_p0n22"]
+
+[node name="Control" type="Control" unique_id=1214222620]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_01rqy")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=799846247]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=333097521]
+layout_mode = 2
+
+[node name="Muzyka" type="CheckBox" parent="CenterContainer/VBoxContainer" unique_id=782501789]
+layout_mode = 2
+text = "Muzyka"
+
+[node name="Dzwieki" type="CheckBox" parent="CenterContainer/VBoxContainer" unique_id=1541443925]
+layout_mode = 2
+text = "Dźwięk"
+
+[node name="Powrot" type="Button" parent="CenterContainer/VBoxContainer" unique_id=151467818]
+layout_mode = 2
+text = "powrót"
+
+[node name="SettingsButtons" type="Sprite2D" parent="." unique_id=1878151773]
+position = Vector2(-498, -67)
+scale = Vector2(4.1953125, 3.5703127)
+texture = ExtResource("2_p0n22")
+
+[connection signal="toggled" from="CenterContainer/VBoxContainer/Muzyka" to="." method="_on_Muzyka_toggled"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/Dzwieki" to="." method="_on_Dzwieki_toggled"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Powrot" to="." method="_on_Powrot_pressed"]
