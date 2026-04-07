@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var heart3 = $HeartBar/HBoxContainer/Heart3
 
 @export var move_speed: float = 100
+@export var sprint_speed: float = 180
 @export var starting_direction: Vector2 = Vector2(0, 1)
 
 @onready var animation_tree = $AnimationTree
@@ -18,11 +19,18 @@ func _ready():
 	update_hearts()
 
 func _physics_process(_delta):
+
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-	velocity = input_direction * move_speed
+
+	var current_speed = move_speed
+
+	if Input.is_action_pressed("sprint"):
+		current_speed = sprint_speed
+
+	velocity = input_direction * current_speed
 	move_and_slide()
 	update_hearts()
 
