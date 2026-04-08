@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://srtbrvr2j1xu"
-path="res://.godot/imported/Bez tytułu.png-a76d28dbac3a08790787243536b59cd9.ctex"
+uid="uid://tls4teupar47"
+path="res://.godot/imported/SOUND ON OFF ICONS ONOFF.png-ee61ddb8d41391f182a88d0ed01ca6a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ikony_menu/Bez tytułu.png"
-dest_files=["res://.godot/imported/Bez tytułu.png-a76d28dbac3a08790787243536b59cd9.ctex"]
+source_file="res://Art/icons/ikony menu/SOUND ON OFF ICONS ONOFF.png"
+dest_files=["res://.godot/imported/SOUND ON OFF ICONS ONOFF.png-ee61ddb8d41391f182a88d0ed01ca6a8.ctex"]
 
 [params]
 

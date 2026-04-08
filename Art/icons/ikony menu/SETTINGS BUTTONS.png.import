@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mbxekowfxaur"
-path="res://.godot/imported/LOGO ZNAK.png-54526db2d99b2b974cff96907d0da845.ctex"
+uid="uid://dwk6exrk8lt5l"
+path="res://.godot/imported/SETTINGS BUTTONS.png-d08c03965fc41a18cd8d0d3d60d8b432.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ikony_menu/LOGO ZNAK.png"
-dest_files=["res://.godot/imported/LOGO ZNAK.png-54526db2d99b2b974cff96907d0da845.ctex"]
+source_file="res://Art/icons/ikony menu/SETTINGS BUTTONS.png"
+dest_files=["res://.godot/imported/SETTINGS BUTTONS.png-d08c03965fc41a18cd8d0d3d60d8b432.ctex"]
 
 [params]
 

@@ -1,44 +1,98 @@
 [gd_scene format=3 uid="uid://cs7t7s5vcbp1o"]
 
 [ext_resource type="Script" uid="uid://eihfha7n240y" path="res://ustawienia.gd" id="1_01rqy"]
-[ext_resource type="Texture2D" uid="uid://c56y4f3xtc1p" path="res://Art/ikony_menu/SETTINGS BUTTONS.png" id="2_p0n22"]
+[ext_resource type="Texture2D" uid="uid://dwk6exrk8lt5l" path="res://Art/icons/ikony menu/SETTINGS BUTTONS.png" id="2_ls2nd"]
+[ext_resource type="Texture2D" uid="uid://beg2vg8rleusa" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCM.png" id="3_iktep"]
+[ext_resource type="Texture2D" uid="uid://dwe1jln6xh0ak" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCS.png" id="3_ykgsm"]
+[ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="5_8rv77"]
+[ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="6_8p3c5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iktep"]
+atlas = ExtResource("2_ls2nd")
+region = Rect2(29, 79, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rv77"]
+atlas = ExtResource("3_iktep")
+region = Rect2(29, 80, 71, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p3c5"]
+atlas = ExtResource("2_ls2nd")
+region = Rect2(29, 47, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntsfd"]
+atlas = ExtResource("3_ykgsm")
+region = Rect2(29, 48, 71, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3en3k"]
+atlas = ExtResource("5_8rv77")
+region = Rect2(29, 79, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n38sy"]
+atlas = ExtResource("6_8p3c5")
+region = Rect2(29, 80, 71, 16)
 
 [node name="Control" type="Control" unique_id=1214222620]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -934.0
+offset_top = -347.0
+offset_right = -934.0
+offset_bottom = -347.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
 script = ExtResource("1_01rqy")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=799846247]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=333097521]
+layout_mode = 0
+offset_top = -36.5
+offset_right = 75.0
+offset_bottom = 36.5
+
+[node name="MusicRow" type="HBoxContainer" parent="VBoxContainer" unique_id=112362887]
+layout_mode = 2
+
+[node name="Muzyka" type="TextureButton" parent="VBoxContainer/MusicRow" unique_id=1685445822]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_iktep")
+texture_pressed = SubResource("AtlasTexture_8rv77")
+
+[node name="MuzykaIcon" type="TextureRect" parent="VBoxContainer/MusicRow" unique_id=1747533337]
+layout_mode = 2
+
+[node name="SfxRow" type="HBoxContainer" parent="VBoxContainer" unique_id=312772625]
+layout_mode = 2
+
+[node name="Dzwieki" type="TextureButton" parent="VBoxContainer/SfxRow" unique_id=957838555]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_8p3c5")
+texture_pressed = SubResource("AtlasTexture_ntsfd")
+
+[node name="DzwiekiIcon" type="TextureRect" parent="VBoxContainer/SfxRow" unique_id=1875483662]
+layout_mode = 2
+
+[node name="Powrot" type="TextureButton" parent="VBoxContainer" unique_id=727925549]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_3en3k")
+texture_pressed = SubResource("AtlasTexture_n38sy")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=11005751]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=333097521]
-layout_mode = 2
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=770883541]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Muzyka" type="CheckBox" parent="CenterContainer/VBoxContainer" unique_id=782501789]
-layout_mode = 2
-text = "Muzyka"
-
-[node name="Dzwieki" type="CheckBox" parent="CenterContainer/VBoxContainer" unique_id=1541443925]
-layout_mode = 2
-text = "Dźwięk"
-
-[node name="Powrot" type="Button" parent="CenterContainer/VBoxContainer" unique_id=151467818]
-layout_mode = 2
-text = "powrót"
-
-[node name="SettingsButtons" type="Sprite2D" parent="." unique_id=1878151773]
-position = Vector2(-498, -67)
-scale = Vector2(4.1953125, 3.5703127)
-texture = ExtResource("2_p0n22")
-
-[connection signal="toggled" from="CenterContainer/VBoxContainer/Muzyka" to="." method="_on_Muzyka_toggled"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/Dzwieki" to="." method="_on_Dzwieki_toggled"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Powrot" to="." method="_on_Powrot_pressed"]
+[connection signal="pressed" from="VBoxContainer/MusicRow/Muzyka" to="." method="_on_Muzyka_pressed"]
+[connection signal="pressed" from="VBoxContainer/SfxRow/Dzwieki" to="." method="_on_Dzwieki_pressed"]
+[connection signal="pressed" from="VBoxContainer/Powrot" to="." method="_on_Powrot_pressed"]

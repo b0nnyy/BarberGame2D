@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c56y4f3xtc1p"
-path="res://.godot/imported/SETTINGS BUTTONS.png-02bd6ffc2d8a4736381c08e512f4711b.ctex"
+uid="uid://jmtkb3it6k3h"
+path="res://.godot/imported/ANGRY FACE.png-f741fdc01135f4a32293b5c20831b882.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ikony_menu/SETTINGS BUTTONS.png"
-dest_files=["res://.godot/imported/SETTINGS BUTTONS.png-02bd6ffc2d8a4736381c08e512f4711b.ctex"]
+source_file="res://Art/icons/ikony/ANGRY FACE.png"
+dest_files=["res://.godot/imported/ANGRY FACE.png-f741fdc01135f4a32293b5c20831b882.ctex"]
 
 [params]
 

@@ -23,5 +23,16 @@ func _on_Dzony_pressed():
 	print("Wybrano Dzonego")
 
 func _on_start_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+
 	if wybrana_postac != "":
+
 		print("Start gry z postacią: " + wybrana_postac)
+
+		GameData.wybrana_postac = wybrana_postac
+
+		get_tree().change_scene_to_file("res://Levels/d_level_salon_01.tscn")
+
+	else:
+
+		print("Najpierw wybierz postać!")
