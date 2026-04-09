@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xjyalhao7yg0"
-path="res://.godot/imported/SOUND ON OFF ICONS OCON.png-b2ea8fbac2ef8c00c62614dea3937ba7.ctex"
+uid="uid://cdgdn5aebpoov"
+path="res://.godot/imported/MUSICOFF.png-81828753f6115a9d76aefb8de53c9103.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/icons/ikony menu/SOUND ON OFF ICONS OCON.png"
-dest_files=["res://.godot/imported/SOUND ON OFF ICONS OCON.png-b2ea8fbac2ef8c00c62614dea3937ba7.ctex"]
+source_file="res://Art/icons/ikony menu/MUSICOFF.png"
+dest_files=["res://.godot/imported/MUSICOFF.png-81828753f6115a9d76aefb8de53c9103.ctex"]
 
 [params]
 

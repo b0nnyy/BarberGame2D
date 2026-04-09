@@ -10,16 +10,12 @@ func add_score(points: int):
 	score += points
 
 func lose_life():
-	if game_over:
-		return
-	
+
 	lives -= 1
-	
-	if lives < 0:
-		lives = 0
-	
-	if lives == 0:
-		trigger_game_over()
+
+	if lives <= 0:
+
+		get_tree().current_scene.show_game_over(score)
 
 func trigger_game_over():
 	if game_over:
@@ -27,4 +23,13 @@ func trigger_game_over():
 	
 	game_over = true
 	print("GAME OVER")
-	get_tree().paused = true
+
+	var scene = get_tree().current_scene
+
+	if scene.has_method("show_game_over"):
+		scene.show_game_over(score)
+
+func reset_game():
+	score = 0
+	lives = 3
+	game_over = false

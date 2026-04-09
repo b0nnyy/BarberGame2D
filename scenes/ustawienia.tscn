@@ -52,7 +52,8 @@ script = ExtResource("1_01rqy")
 layout_mode = 0
 offset_top = -36.5
 offset_right = 75.0
-offset_bottom = 36.5
+offset_bottom = 27.0
+scale = Vector2(4, 4)
 
 [node name="MusicRow" type="HBoxContainer" parent="VBoxContainer" unique_id=112362887]
 layout_mode = 2

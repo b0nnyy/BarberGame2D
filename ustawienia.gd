@@ -51,14 +51,14 @@ func _on_Dzwieki_pressed():
 func _update_icons():
 
 	if GameSettings.music_enabled:
-		muzyka_icon.texture = preload("res://Art/icons/ikony menu/MUSIC2.png")
+		muzyka_icon.texture = preload("res://Art/icons/ikony menu/MUSICON.png")
 	else:
-		muzyka_icon.texture = preload("res://Art/icons/ikony menu/MUSIC3.png")
+		muzyka_icon.texture = preload("res://Art/icons/ikony menu/MUSICOFF.png")
 
 	if GameSettings.sfx_enabled:
-		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUND ON OFF ICONS.png")
+		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUNDON.png")
 	else:
-		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUND ON OFF ICONS ONOFF.png")
+		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUNDOFF.png")
 
 
 func _on_Powrot_pressed():
