@@ -11,6 +11,7 @@ var last_service: String = ""
 var active_customers: Array = []
 
 
+
 func _ready():
 	randomize()
 	call_deferred("start_spawning")
@@ -54,7 +55,7 @@ func spawn_customer():
 	waiting_queue.append(customer)
 	update_queue_positions()
 	print("Spawn service: ", new_service)
-
+	
 func update_queue_positions():
 	var max_index = min(waiting_queue.size(), queue_positions.size())
 	for i in range(max_index):

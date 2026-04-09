@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var hand = $Hand
 @onready var interaction_zone = $InteractionZone
 
+
 var held_item = null
 
 func _ready():

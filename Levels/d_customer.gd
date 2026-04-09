@@ -24,6 +24,7 @@ var has_already_failed := false
 @onready var patience_bar = $PatienceBar
 @onready var score_popup = $ScorePopup
 
+
 func _ready():
 	request_icon.visible = false
 	score_popup.visible = false
@@ -174,27 +175,37 @@ func perform_work_step():
 		finish_and_leave()
 
 func finish_and_leave():
-	GameManager.add_score(1)
-	show_score_popup()
 
 	current_work_progress = 0
+
 	request_icon.visible = false
 	patience_bar.visible = false
-	
+
+	show_score_popup() 
+
 	if target_seat:
 		target_seat.release()
-		target_seat = null  
+		target_seat = null
 
 	current_state = CustomerState.EXITING
 	target_position = exit_position
 	has_target = true
 
 func show_score_popup():
-	score_popup.visible = true
-	score_popup.text = "+1"
-	score_popup.modulate = Color(0, 1, 0, 1)
-	score_popup.position = Vector2(0, -100)
 
-	await get_tree().create_timer(0.5).timeout
+	score_popup.visible = true
+	score_popup.modulate = Color(1,1,1,1)
+	score_popup.position = Vector2(0, -80)
+
+	var t = create_tween()
+	
+	t.tween_property(score_popup, "scale", Vector2(1.3,1.3), 0.1)
+	t.tween_property(score_popup, "scale", Vector2(1,1), 0.1)
+
+	t.tween_property(score_popup, "position:y", -140, 0.5)
+	t.parallel().tween_property(score_popup, "modulate:a", 0, 0.5)
+
+	await t.finished
 
 	score_popup.visible = false
+	score_popup.modulate.a = 1
