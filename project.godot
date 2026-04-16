@@ -25,6 +25,7 @@ GameManager="*uid://dc0vxp1hns553"
 GameData="*uid://ddv6rk1fafylk"
 AudioManager="*uid://ddx42l4dmlfb6"
 GameSettings="*uid://dngeerrc8e6is"
+LeaderboardManager="*uid://bm11gbkaq2bck"
 
 [display]
 

@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://g4int7lrhhm"]
 
 [ext_resource type="Script" uid="uid://bkng0dhca31bx" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="2_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cw2acf4exyrwk" path="res://Art/icons/ikony menu/PLAY.png" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://c4gl2sfc55hnd" path="res://Art/icons/ikony menu/MENU BUTTONS.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="4_8ln24"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l6cm7"]
-load_path = "res://.godot/imported/MENU BUTTONS.png-834e12f305c4092047e1adb85f1c7b8a.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
-atlas = SubResource("CompressedTexture2D_l6cm7")
+atlas = ExtResource("2_8ln24")
 region = Rect2(28, 15, 71, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqqt6"]
