@@ -19,7 +19,7 @@ func start_spawning():
 	while true:
 		spawn_customer()
 		try_send_customer_to_seat()
-		await get_tree().create_timer(spawn_interval).timeout
+		await get_tree().create_timer(spawn_interval, false).timeout
 		
 func try_send_customer_to_seat():
 	if waiting_queue.is_empty():

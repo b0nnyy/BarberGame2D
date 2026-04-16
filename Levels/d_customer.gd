@@ -28,6 +28,7 @@ func _ready():
 	request_icon.visible = false
 	score_popup.visible = false
 
+
 func assign_seat(seat):
 	if current_state != CustomerState.IN_QUEUE and current_state != CustomerState.WALKING:
 		return
@@ -37,8 +38,10 @@ func assign_seat(seat):
 	has_target = true
 	current_state = CustomerState.WALKING
 
+
 func set_requested_service(service_name: String):
 	requested_service = service_name
+
 
 func become_angry():
 	is_angry = true
@@ -49,6 +52,7 @@ func become_angry():
 
 	t.tween_property(request_icon,"rotation",0.15,0.1)
 	t.tween_property(request_icon,"rotation",-0.15,0.1)
+
 
 func leave_angry():
 	if has_already_failed:
@@ -70,6 +74,7 @@ func leave_angry():
 	target_position = exit_position
 	has_target = true
 
+
 func update_patience(delta):
 	patience -= patience_decay * delta
 	patience_bar.value = patience
@@ -80,6 +85,7 @@ func update_patience(delta):
 	if patience <= 0 and current_state != CustomerState.EXITING:
 		leave_angry()
 
+
 func _physics_process(delta):
 	if current_state == CustomerState.WAITING:
 		update_patience(delta)
@@ -89,13 +95,16 @@ func _physics_process(delta):
 	or current_state == CustomerState.EXITING) and has_target:
 		move_to_seat()
 
+
 func go_to_waiting_pos(pos: Vector2):
 	target_position = pos
 	has_target = true
 	current_state = CustomerState.IN_QUEUE 
 
+
 func move_to_seat():
 	var direction = target_position - global_position
+
 	if direction.length() > 5:
 		velocity = direction.normalized() * speed
 		move_and_slide()
@@ -108,8 +117,10 @@ func move_to_seat():
 		elif current_state == CustomerState.EXITING:
 			queue_free()
 
+
 func sit_down():
 	global_position = target_seat.global_position
+
 	if target_seat.has_method("occupy"):
 		target_seat.occupy(self)
 
@@ -122,10 +133,12 @@ func sit_down():
 	patience_bar.visible = true
 	has_already_failed = false
 
+
 func show_service_icon():
 	request_icon.visible = false
 
 	match requested_service:
+
 		"haircut":
 			request_icon.texture = haircut_icon
 			request_icon.visible = true
@@ -141,6 +154,7 @@ func show_service_icon():
 		_:
 			print("Nieznana usługa: ", requested_service)
 
+
 func take_item(incoming_item):
 	if current_state != CustomerState.WAITING:
 		return
@@ -150,15 +164,19 @@ func take_item(incoming_item):
 
 	if requested_service == "haircut" and item_name.contains("nozyczki"):
 		is_correct = true
+
 	elif requested_service == "beard" and item_name.contains("brzytwa"):
 		is_correct = true
+
 	elif requested_service == "golarka" and item_name.contains("golarka"): 
 		is_correct = true
 
 	if is_correct:
 		perform_work_step()
 
+
 func perform_work_step():
+
 	current_work_progress += 1
 
 	if has_node("WorkProgress"):
@@ -173,14 +191,30 @@ func perform_work_step():
 	if current_work_progress >= clicks_required:
 		finish_and_leave()
 
+
 func finish_and_leave():
 	GameManager.add_score(1)
 	show_score_popup()
 
+	var points = 10
+
+	if patience > 70:
+		points = 20
+	elif patience > 40:
+		points = 15
+
+	GameManager.add_score(points)
+
 	current_work_progress = 0
 	request_icon.visible = false
 	patience_bar.visible = false
+<<<<<<< Updated upstream
 	
+=======
+
+	show_score_popup(points)
+
+>>>>>>> Stashed changes
 	if target_seat:
 		target_seat.release()
 		target_seat = null  
@@ -189,12 +223,34 @@ func finish_and_leave():
 	target_position = exit_position
 	has_target = true
 
+<<<<<<< Updated upstream
 func show_score_popup():
+=======
+
+func show_score_popup(points):
+
+>>>>>>> Stashed changes
 	score_popup.visible = true
 	score_popup.text = "+1"
 	score_popup.modulate = Color(0, 1, 0, 1)
 	score_popup.position = Vector2(0, -100)
 
+<<<<<<< Updated upstream
 	await get_tree().create_timer(0.5).timeout
+=======
+	# jeśli ScorePopup to Label
+	if score_popup is Label:
+		score_popup.text = "+" + str(points)
+
+	var t = create_tween()
+	
+	t.tween_property(score_popup, "scale", Vector2(1.3,1.3), 0.1)
+	t.tween_property(score_popup, "scale", Vector2(1,1), 0.1)
+
+	t.tween_property(score_popup, "position:y", -140, 0.5)
+	t.parallel().tween_property(score_popup, "modulate:a", 0, 0.5)
+
+	await t.finished
+>>>>>>> Stashed changes
 
 	score_popup.visible = false
