@@ -5,8 +5,6 @@ func _ready():
 	print("Wybrana postać to: " + GameData.wybrana_postac)
 
 @onready var pause_menu = $UI/PauseMenu
-<<<<<<< Updated upstream
-=======
 @onready var game_over_menu = $UI/GameOverMenu
 @onready var score_label = $UI/GameOverMenu/Panel/VBoxContainer/ScoreLabel
 @onready var name_input = $UI/GameOverMenu/Panel/VBoxContainer/NameInput
@@ -14,7 +12,6 @@ func _ready():
 @onready var fade_layer = $UI/FadeLayer
 var score_saved := false
 
->>>>>>> Stashed changes
 
 
 func _input(event):
@@ -38,8 +35,6 @@ func _resume_game():
 
 	get_tree().paused = false
 	pause_menu.visible = false
-<<<<<<< Updated upstream
-=======
 
 func show_game_over(score):
 	score_saved = false
@@ -97,4 +92,3 @@ func _on_save_score_button_pressed():
 
 	name_input.visible = false
 	save_button.visible = false
->>>>>>> Stashed changes

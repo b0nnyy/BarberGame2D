@@ -24,6 +24,7 @@ var has_already_failed := false
 @onready var patience_bar = $PatienceBar
 @onready var score_popup = $ScorePopup
 
+
 func _ready():
 	request_icon.visible = false
 	score_popup.visible = false
@@ -193,8 +194,6 @@ func perform_work_step():
 
 
 func finish_and_leave():
-	GameManager.add_score(1)
-	show_score_popup()
 
 	var points = 10
 
@@ -206,38 +205,27 @@ func finish_and_leave():
 	GameManager.add_score(points)
 
 	current_work_progress = 0
+
 	request_icon.visible = false
 	patience_bar.visible = false
-<<<<<<< Updated upstream
-	
-=======
 
 	show_score_popup(points)
 
->>>>>>> Stashed changes
 	if target_seat:
 		target_seat.release()
-		target_seat = null  
+		target_seat = null
 
 	current_state = CustomerState.EXITING
 	target_position = exit_position
 	has_target = true
 
-<<<<<<< Updated upstream
-func show_score_popup():
-=======
 
 func show_score_popup(points):
 
->>>>>>> Stashed changes
 	score_popup.visible = true
-	score_popup.text = "+1"
-	score_popup.modulate = Color(0, 1, 0, 1)
-	score_popup.position = Vector2(0, -100)
+	score_popup.modulate = Color(1,1,1,1)
+	score_popup.position = Vector2(0, -80)
 
-<<<<<<< Updated upstream
-	await get_tree().create_timer(0.5).timeout
-=======
 	# jeśli ScorePopup to Label
 	if score_popup is Label:
 		score_popup.text = "+" + str(points)
@@ -251,6 +239,6 @@ func show_score_popup(points):
 	t.parallel().tween_property(score_popup, "modulate:a", 0, 0.5)
 
 	await t.finished
->>>>>>> Stashed changes
 
 	score_popup.visible = false
+	score_popup.modulate.a = 1
