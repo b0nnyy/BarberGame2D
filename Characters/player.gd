@@ -7,8 +7,12 @@ extends CharacterBody2D
 @export var move_speed: float = 100
 @export var sprint_speed: float = 180
 @export var starting_direction: Vector2 = Vector2(0, 1)
+@export var max_stamina: float = 100
+@export var stamina: float = 100
+@export var stamina_drain: float = 40   # ile spada na sekundę
+@export var stamina_regen: float = 25   # ile się regeneruje na sekundę
 
-@onready var animation_tree = $AnimationTree
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var hand = $Hand
 @onready var interaction_zone = $InteractionZone
 
@@ -16,28 +20,34 @@ extends CharacterBody2D
 var held_item = null
 
 func _ready():
-	animation_tree.set("parameters/Idle/blend_position", starting_direction)
 	update_hearts()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
 
+	var is_moving = input_direction != Vector2.ZERO
+	var wants_to_sprint = Input.is_action_pressed("sprint")
+
+	# ❗ sprint tylko jeśli masz stamina
+	var is_sprinting = wants_to_sprint and stamina > 0
+
 	var current_speed = move_speed
 
-	if Input.is_action_pressed("sprint"):
+	if is_sprinting and is_moving:
 		current_speed = sprint_speed
 
 	velocity = input_direction * current_speed
 	move_and_slide()
-	update_hearts()
 
-func _input(event):
-	if event.is_action_pressed("use_item"):
-		attempt_pick_up()
+	# ⭐ stamina system
+	update_stamina(delta, is_sprinting, is_moving)
+
+	# ⭐ animacje
+	update_animation(input_direction)
 
 func attempt_pick_up():
 	var areas = interaction_zone.get_overlapping_areas()
@@ -91,3 +101,42 @@ func update_hearts():
 	heart1.visible = GameManager.lives >= 1
 	heart2.visible = GameManager.lives >= 2
 	heart3.visible = GameManager.lives >= 3
+
+var last_direction = "down"  # zapamiętujemy kierunek, NIE animację
+
+func update_animation(direction: Vector2):
+
+	var new_anim = ""
+	var is_sprinting = Input.is_action_pressed("sprint") and direction != Vector2.ZERO
+
+	if direction == Vector2.ZERO:
+		animated_sprite.play("idle_" + last_direction)
+		return
+	if abs(direction.y) > abs(direction.x):
+
+		if direction.y > 0:
+			last_direction = "down"
+			new_anim = "run_down" if is_sprinting else "walk_down"
+		else:
+			last_direction = "up"
+			new_anim = "run_up" if is_sprinting else "walk_up"
+
+	else:
+
+		if direction.x > 0:
+			last_direction = "right"
+			new_anim = "run_right" if is_sprinting else "walk_right"
+		else:
+			last_direction = "left"
+			new_anim = "run_left" if is_sprinting else "walk_left"
+	if animated_sprite.animation != new_anim:
+		animated_sprite.play(new_anim)
+
+func update_stamina(delta, is_sprinting, is_moving):
+
+	if is_sprinting and is_moving and stamina > 0:
+		stamina -= stamina_drain * delta
+	else:
+		stamina += stamina_regen * delta
+
+	stamina = clamp(stamina, 0, max_stamina)
