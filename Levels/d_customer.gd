@@ -226,7 +226,7 @@ func show_score_popup(points):
 	score_popup.modulate = Color(1,1,1,1)
 	score_popup.position = Vector2(0, -80)
 
-	# jeśli ScorePopup to Label
+	
 	if score_popup is Label:
 		score_popup.text = "+" + str(points)
 

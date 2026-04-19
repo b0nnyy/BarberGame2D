@@ -3,20 +3,23 @@ extends CharacterBody2D
 @onready var heart1 = $HeartBar/HBoxContainer/Heart
 @onready var heart2 = $HeartBar/HBoxContainer/Heart2
 @onready var heart3 = $HeartBar/HBoxContainer/Heart3
+@onready var stamina_bar = $StaminaBar
 
 @export var move_speed: float = 100
 @export var sprint_speed: float = 180
 @export var starting_direction: Vector2 = Vector2(0, 1)
 @export var max_stamina: float = 100
 @export var stamina: float = 100
-@export var stamina_drain: float = 40   # ile spada na sekundę
-@export var stamina_regen: float = 25   # ile się regeneruje na sekundę
+@export var stamina_drain: float = 40   
+@export var stamina_regen: float = 25   
+@export var sprint_cooldown: float = 0.5
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var hand = $Hand
 @onready var interaction_zone = $InteractionZone
 
-
+var can_sprint: bool = true
+var sprint_cooldown_timer: float = 0.0
 var held_item = null
 
 func _ready():
@@ -32,9 +35,7 @@ func _physics_process(delta):
 	var is_moving = input_direction != Vector2.ZERO
 	var wants_to_sprint = Input.is_action_pressed("sprint")
 
-	# ❗ sprint tylko jeśli masz stamina
-	var is_sprinting = wants_to_sprint and stamina > 0
-
+	var is_sprinting = wants_to_sprint and stamina > 0 and can_sprint
 	var current_speed = move_speed
 
 	if is_sprinting and is_moving:
@@ -42,17 +43,19 @@ func _physics_process(delta):
 
 	velocity = input_direction * current_speed
 	move_and_slide()
-
-	# ⭐ stamina system
 	update_stamina(delta, is_sprinting, is_moving)
-
-	# ⭐ animacje
+	update_sprint_cooldown(delta)
 	update_animation(input_direction)
+
+	stamina_bar.value = lerp(stamina_bar.value, stamina, 0.2)
+	stamina_bar.max_value = max_stamina
 
 func attempt_pick_up():
 	var areas = interaction_zone.get_overlapping_areas()
 	var target = null
 	for area in areas:
+		print("AREA:", area.name)
+		print("GROUPS:", area.get_groups())
 		if area.is_in_group("Interactable"):
 			if area.has_method("take_item") or area.get_parent().has_method("take_item"):
 				if area.has_method("take_item"):
@@ -73,7 +76,7 @@ func attempt_pick_up():
 			pick_up_item(target)
 	elif held_item != null:
 		drop_item()
-
+		
 func pick_up_item(item):
 	held_item = item
 	if held_item.get_parent():
@@ -102,7 +105,7 @@ func update_hearts():
 	heart2.visible = GameManager.lives >= 2
 	heart3.visible = GameManager.lives >= 3
 
-var last_direction = "down"  # zapamiętujemy kierunek, NIE animację
+var last_direction = "down"  
 
 func update_animation(direction: Vector2):
 
@@ -140,3 +143,20 @@ func update_stamina(delta, is_sprinting, is_moving):
 		stamina += stamina_regen * delta
 
 	stamina = clamp(stamina, 0, max_stamina)
+	if stamina <= 0 and can_sprint:
+		can_sprint = false
+		sprint_cooldown_timer = sprint_cooldown
+	elif stamina > 20:
+			can_sprint = true
+
+func update_sprint_cooldown(delta):
+
+	if not can_sprint:
+		sprint_cooldown_timer -= delta
+		if sprint_cooldown_timer <= 0:
+			can_sprint = true
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("use_item"):
+		print("E działa")
+		attempt_pick_up()

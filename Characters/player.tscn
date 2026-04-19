@@ -332,6 +332,12 @@ radius = 11.045361
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65n15"]
 size = Vector2(35, 27)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb825"]
+bg_color = Color(1.7296989e-08, 0.054266304, 0.021945696, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65n15"]
+bg_color = Color(3.080368e-06, 0.7255603, 0.19678387, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1059542811]
 script = ExtResource("1_eovys")
 
@@ -339,11 +345,12 @@ script = ExtResource("1_eovys")
 position = Vector2(4.7683716e-07, -4.7683716e-07)
 scale = Vector2(1.375, 1.375)
 sprite_frames = SubResource("SpriteFrames_q6x5r")
-animation = &"run_right"
+animation = &"idle_left"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1435313228]
-position = Vector2(-1, 11)
+position = Vector2(0, 8)
+scale = Vector2(0.8907433, 0.84025156)
 shape = SubResource("CircleShape2D_vb825")
 
 [node name="HeartBar" type="CanvasLayer" parent="." unique_id=675894840]
@@ -383,7 +390,21 @@ texture = ExtResource("3_vb825")
 position = Vector2(0, -50)
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1716929620]
+scale = Vector2(0.9746552, 0.7493892)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1631153468]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_65n15")
+
+[node name="StaminaBar" type="ProgressBar" parent="." unique_id=1073406243]
+anchors_preset = -1
+offset_left = -14.0
+offset_top = -22.0
+offset_right = -10.0
+offset_bottom = 5.0
+rotation = -1.5707964
+scale = Vector2(-0.6956805, 1.0115592)
+theme_override_styles/background = SubResource("StyleBoxFlat_vb825")
+theme_override_styles/fill = SubResource("StyleBoxFlat_65n15")
+fill_mode = 2
+show_percentage = false

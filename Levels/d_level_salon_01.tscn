@@ -191,7 +191,7 @@ position = Vector2(385, 606)
 zoom = Vector2(2, 2)
 
 [node name="Nozyczki" parent="." unique_id=1586529084 instance=ExtResource("6_fms76")]
-position = Vector2(545, 429)
+position = Vector2(546, 429)
 
 [node name="Golarka" parent="." unique_id=204851687 instance=ExtResource("7_sluam")]
 position = Vector2(604, 429)
