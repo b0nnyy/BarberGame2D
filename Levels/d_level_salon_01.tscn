@@ -215,10 +215,11 @@ gizmo_extents = 5.1
 script = ExtResource("9_sluam")
 
 [node name="ScoreLabel" type="Label" parent="UI_score" unique_id=391709054]
-offset_left = 6.0
-offset_top = 30.0
-offset_right = 71.0
-offset_bottom = 53.0
+offset_left = 17.0
+offset_top = 82.0
+offset_right = 82.0
+offset_bottom = 105.0
+scale = Vector2(1.4357617, 1.4357617)
 text = "Score : 0"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=71915982]

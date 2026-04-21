@@ -70,6 +70,7 @@ func leave_angry():
 		target_seat = null
 
 	GameManager.lose_life()
+	get_tree().get_first_node_in_group("player").update_hearts()
 
 	current_state = CustomerState.EXITING
 	target_position = exit_position

@@ -22,6 +22,8 @@ var can_sprint: bool = true
 var sprint_cooldown_timer: float = 0.0
 var held_item = null
 
+
+
 func _ready():
 	update_hearts()
 
@@ -49,6 +51,11 @@ func _physics_process(delta):
 
 	stamina_bar.value = lerp(stamina_bar.value, stamina, 0.2)
 	stamina_bar.max_value = max_stamina
+
+func _process(_delta):
+	if Input.is_action_just_pressed("use_item"):
+		print("E działa")
+		attempt_pick_up()
 
 func attempt_pick_up():
 	var areas = interaction_zone.get_overlapping_areas()
@@ -156,7 +163,3 @@ func update_sprint_cooldown(delta):
 		if sprint_cooldown_timer <= 0:
 			can_sprint = true
 	
-func _process(_delta):
-	if Input.is_action_just_pressed("use_item"):
-		print("E działa")
-		attempt_pick_up()
