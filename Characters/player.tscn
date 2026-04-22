@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1yca82k2guaq"]
 
 [ext_resource type="Script" uid="uid://bsqgip6csl1hp" path="res://Characters/player.gd" id="1_eovys"]
-[ext_resource type="SpriteFrames" uid="uid://s2be44vlghb1" path="res://Characters/Lukasz_frames.tres" id="2_vb825"]
+[ext_resource type="SpriteFrames" uid="uid://bwp2b0inoj8k1" path="res://Characters/igor_frames.tres" id="2_vb825"]
 [ext_resource type="Texture2D" uid="uid://boiydjdlyyqli" path="res://Art/icons/ikony/HEART.png" id="3_vb825"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vb825"]
@@ -23,7 +23,7 @@ script = ExtResource("1_eovys")
 position = Vector2(4.7683716e-07, -4.7683716e-07)
 scale = Vector2(1.375, 1.375)
 sprite_frames = ExtResource("2_vb825")
-animation = &"walk_up"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1435313228]
 position = Vector2(0, 8)

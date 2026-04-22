@@ -22,57 +22,30 @@ var can_sprint: bool = true
 var sprint_cooldown_timer: float = 0.0
 var held_item = null
 
+var characters = {
+	"Lukasz": "res://Characters/Lukasz_frames.tres",
+	"LukaszB": "res://Characters/LukaszB_frames.tres",
+	"Patryk": "res://Characters/Patryk_frames.tres",
+	"Shimmy": "res://Characters/Shimmy_frames.tres",
+	"Igor": "res://Characters/Igor_frames.tres",
+	"Dzony": "res://Characters/Dzony_frames.tres"
+}
 
-
-func _ready():
-	apply_selected_character()   
+func _ready():  
 	update_hearts()
 	set_character()
-
+	print("Wybrana postać:", GameData.wybrana_postac)
 
 func set_character():
 	var char_name = GameData.wybrana_postac
-
-	match char_name:
-		"Lukasz":
-			animated_sprite.sprite_frames = preload("res://characters/lukasz_frames.tres")
-
-		"Patryk":
-			animated_sprite.sprite_frames = preload("res://characters/patryk_frames.tres")
-
-		"Shimmy":
-			animated_sprite.sprite_frames = preload("res://characters/shimmy_frames.tres")
-
-		"Igor":
-			animated_sprite.sprite_frames = preload("res://characters/igor_frames.tres")
-
-		"LukaszB":
-			animated_sprite.sprite_frames = preload("res://characters/LukaszB_frames.tres")
-
-		_:
-			print("Brak wybranej postaci")
-
-func apply_selected_character():
-
-	match GameData.wybrana_postac:
-
-		"Lukasz":
-			animated_sprite.sprite_frames = preload("res://characters/Lukasz_frames.tres")
-
-		"Patryk":
-			animated_sprite.sprite_frames = preload("res://characters/Patryk_frames.tres")
-
-		"Shimmy":
-			animated_sprite.sprite_frames = preload("res://characters/Shimmy_frames.tres")
-
-		"Igor":
-			animated_sprite.sprite_frames = preload("res://characters/Igor_frames.tres")
-
-		"LukaszB":
-			animated_sprite.sprite_frames = preload("res://characters/LukaszB_frames.tres")
-
-		_:
-			print("Brak wybranej postaci")
+	
+	if characters.has(char_name):
+		var path = characters[char_name]
+		print("Ładuje:", char_name, "->", path)
+		animated_sprite.sprite_frames = load(path)
+	else:
+		print("Nie znaleziono postaci:", char_name)
+		
 
 func _physics_process(delta):
 
