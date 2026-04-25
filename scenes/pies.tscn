@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://crtaapidfw5s3"]
+
+[ext_resource type="Texture2D" uid="uid://dy57bnlpqxgev" path="res://Art/Test Character/PIESKI_ANIMATION.png" id="1_4r4ip"]
+[ext_resource type="Script" uid="uid://v38fhcd16kks" path="res://skrypty/pies.gd" id="1_f21aa"]
+
+[node name="Pies" type="Node2D" unique_id=1020205980]
+script = ExtResource("1_f21aa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=814379895]
+texture = ExtResource("1_4r4ip")
+hframes = 2
+vframes = 2

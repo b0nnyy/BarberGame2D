@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ci1geixxeyna7" path="res://scenes/PauseMenu.tscn" id="11_by3im"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="12_k6m37"]
 [ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="13_yrxkd"]
+[ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twtlm"]
 size = Vector2(656, 7)
@@ -290,6 +291,10 @@ process_mode = 2
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_jnvy2")
 texture_pressed = SubResource("AtlasTexture_ru0d3")
+
+[node name="Pies" parent="." unique_id=1020205980 instance=ExtResource("14_yrxkd")]
+position = Vector2(619.00006, 697)
+scale = Vector2(1.4, 1.4)
 
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton" to="." method="_on_save_score_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

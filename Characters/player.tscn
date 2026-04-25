@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1yca82k2guaq"]
 
 [ext_resource type="Script" uid="uid://bsqgip6csl1hp" path="res://Characters/player.gd" id="1_eovys"]
-[ext_resource type="SpriteFrames" uid="uid://bwp2b0inoj8k1" path="res://Characters/igor_frames.tres" id="2_vb825"]
+[ext_resource type="SpriteFrames" uid="uid://bwp2b0inoj8k1" path="res://Characters/Igor_frames.tres" id="2_vb825"]
 [ext_resource type="Texture2D" uid="uid://boiydjdlyyqli" path="res://Art/icons/ikony/HEART.png" id="3_vb825"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vb825"]
@@ -17,6 +17,7 @@ bg_color = Color(1.7296989e-08, 0.054266304, 0.021945696, 1)
 bg_color = Color(3.080368e-06, 0.7255603, 0.19678387, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1059542811 groups=["player"]]
+z_index = 2
 script = ExtResource("1_eovys")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=694071107]
