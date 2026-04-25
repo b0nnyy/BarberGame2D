@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var haircut_icon: Texture2D
 @export var beard_icon: Texture2D
 @export var golarka_icon: Texture2D 
+@export var haircut_frames: SpriteFrames
+@export var beard_frames: SpriteFrames
+@export var golarka_frames: SpriteFrames
 
 enum CustomerState { WALKING, SEATED, WAITING, IN_QUEUE, EXITING }
 var current_state = CustomerState.WALKING
@@ -19,7 +22,9 @@ var patience: float = 100
 var patience_decay: float = 5   
 var is_angry: bool = false
 var has_already_failed := false
+var last_direction = "down"
 
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var request_icon = $RequestIcon
 @onready var patience_bar = $PatienceBar
 @onready var score_popup = $ScorePopup
@@ -42,7 +47,39 @@ func assign_seat(seat):
 
 func set_requested_service(service_name: String):
 	requested_service = service_name
+	update_appearance()
 
+func update_appearance():
+	match requested_service:
+		"haircut":
+			animated_sprite.sprite_frames = haircut_frames
+		"beard":
+			animated_sprite.sprite_frames = beard_frames
+		"golarka":
+			animated_sprite.sprite_frames = golarka_frames
+	animated_sprite.play("idle_down")  
+
+func update_animation():
+	var direction = velocity
+
+	if direction == Vector2.ZERO:
+		animated_sprite.play("idle_" + last_direction)
+		return
+
+	if abs(direction.y) > abs(direction.x):
+		if direction.y > 0:
+			last_direction = "down"
+			animated_sprite.play("walk_down")
+		else:
+			last_direction = "up"
+			animated_sprite.play("walk_up")
+	else:
+		if direction.x > 0:
+			last_direction = "right"
+			animated_sprite.play("walk_right")
+		else:
+			last_direction = "left"
+			animated_sprite.play("walk_left")
 
 func become_angry():
 	is_angry = true
@@ -118,7 +155,7 @@ func move_to_seat():
 			sit_down()
 		elif current_state == CustomerState.EXITING:
 			queue_free()
-
+	update_animation()
 
 func sit_down():
 	global_position = target_seat.global_position

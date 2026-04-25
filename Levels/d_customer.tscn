@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b8cqr7t2xymwb" path="res://Art/icons/nozyczki.png" id="2_453eh"]
 [ext_resource type="Texture2D" uid="uid://c8sroueh7bxy7" path="res://Art/icons/brzytwa.png" id="3_0tahi"]
 [ext_resource type="Texture2D" uid="uid://py7jchys7t2m" path="res://Art/icons/golarka.png" id="4_s7aux"]
-[ext_resource type="Texture2D" uid="uid://cjcxnbjflxtdl" path="res://Art/Test Character/page_bg.png" id="5_453eh"]
+[ext_resource type="SpriteFrames" uid="uid://ckqxyk1wjpnha" path="res://Characters/klient3_frames.tres" id="5_0tahi"]
+[ext_resource type="SpriteFrames" uid="uid://545aq7rq4u3n" path="res://Characters/klient1_frames.tres" id="5_du8na"]
 [ext_resource type="Texture2D" uid="uid://c5wx445tbj0oc" path="res://Art/icons/ikony/COIN.png" id="6_0tahi"]
+[ext_resource type="SpriteFrames" uid="uid://d4ilog146s651" path="res://Characters/klient2_frames.tres" id="6_e7e6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tahi"]
 radius = 9.055386
@@ -18,13 +20,15 @@ script = ExtResource("1_04txp")
 haircut_icon = ExtResource("2_453eh")
 beard_icon = ExtResource("3_0tahi")
 golarka_icon = ExtResource("4_s7aux")
+haircut_frames = ExtResource("5_du8na")
+beard_frames = ExtResource("6_e7e6n")
+golarka_frames = ExtResource("5_0tahi")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=215222880]
-position = Vector2(-1.9073486e-06, 0)
-scale = Vector2(0.2890625, 0.3125)
-texture = ExtResource("5_453eh")
-hframes = 7
-vframes = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=982178590]
+z_index = 1
+scale = Vector2(1.34375, 1.34375)
+sprite_frames = ExtResource("5_0tahi")
+animation = &"walk_up"
 
 [node name="RequestIcon" type="Sprite2D" parent="." unique_id=268412501]
 visible = false
@@ -39,7 +43,7 @@ value = 100.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1269247081]
-position = Vector2(-2, 7)
+position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_0tahi")
 disabled = true
 
@@ -49,7 +53,7 @@ position = Vector2(0, -48)
 [node name="Area2D" type="Area2D" parent="." unique_id=1036294321 groups=["Interactable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=444727056]
-position = Vector2(-1, 4.5)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_s7aux")
 
 [node name="ScorePopup" type="TextureRect" parent="." unique_id=1872847750]
