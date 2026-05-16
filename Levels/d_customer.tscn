@@ -62,3 +62,8 @@ offset_top = -100.0
 offset_right = 40.0
 offset_bottom = -60.0
 texture = ExtResource("6_0tahi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=162865993]
+avoidance_enabled = true
+radius = 8.0
+neighbor_distance = 30.0
