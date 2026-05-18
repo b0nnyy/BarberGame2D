@@ -70,6 +70,7 @@ text = "Lukasz"
 position = Vector2(468, 129)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Preview" unique_id=1138444018]
+animation = &""
 
 [connection signal="pressed" from="Rozpocznij grę" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/LukaszB" to="." method="_on_lukasz_b_pressed"]

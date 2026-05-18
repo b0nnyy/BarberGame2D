@@ -23,7 +23,7 @@ var sprint_cooldown_timer: float = 0.0
 var held_item = null
 
 var characters = {
-	"Lukasz": "res://Characters/Lukasz_frames.tres",
+	"Lukasz": "res://Characters/lukasz_frames.tres",
 	"LukaszB": "res://Characters/LukaszB_frames.tres",
 	"Patryk": "res://Characters/Patryk_frames.tres",
 	"Shimmy": "res://Characters/Shimmy_frames.tres",
