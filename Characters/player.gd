@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var stamina_drain: float = 40   
 @export var stamina_regen: float = 25   
 @export var sprint_cooldown: float = 0.5
+@export var dart_ui: CanvasLayer
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var hand = $Hand
@@ -74,7 +75,9 @@ func _physics_process(delta):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("use_item"):
-		print("E działa")
+		if dart_ui and dart_ui.visible:
+			dart_ui.throw_dart()
+			return
 		attempt_pick_up()
 
 func attempt_pick_up():
@@ -84,6 +87,9 @@ func attempt_pick_up():
 		print("AREA:", area.name)
 		print("GROUPS:", area.get_groups())
 		if area.is_in_group("Interactable"):
+			if area.has_method("interact"):
+				area.interact(self)
+				return
 			if area.has_method("take_item") or area.get_parent().has_method("take_item"):
 				if area.has_method("take_item"):
 					target = area

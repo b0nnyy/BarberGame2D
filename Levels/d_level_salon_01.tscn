@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="13_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="Texture2D" uid="uid://cqd60s7hc33op" path="res://Art/tilemap.png" id="15_jnvy2"]
+[ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
+[ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yrxkd"]
 vertices = PackedVector2Array(865, 413, 865, 672.84375, 799, 671.85156, 525, 413, 525, 675, 592, 675, 592, 735, 799, 733, 758, 912.90625, 731.14844, 914, 865.9531, 733, 865.03906, 913.89844, 758, 953, 921, 953, 921, 982, 730.14844, 982, 525, 914, 525, 735)
@@ -186,8 +188,9 @@ scale = Vector2(1.339, 1.339)
 position = Vector2(558, 764)
 scale = Vector2(1.339, 1.339)
 
-[node name="Player" parent="." unique_id=1059542811 groups=["Interactable"] instance=ExtResource("5_ucvr3")]
+[node name="Player" parent="." unique_id=1059542811 node_paths=PackedStringArray("dart_ui") groups=["player"] instance=ExtResource("5_ucvr3")]
 position = Vector2(385, 606)
+dart_ui = NodePath("../CanvasLayer")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1294629052]
 remote_path = NodePath("../../Camera2D2")
@@ -238,6 +241,7 @@ visible = false
 
 [node name="FadeLayer" type="ColorRect" parent="UI" unique_id=1964602246]
 process_mode = 2
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -309,6 +313,17 @@ texture_pressed = SubResource("AtlasTexture_ru0d3")
 [node name="Pies" parent="." unique_id=1020205980 instance=ExtResource("14_yrxkd")]
 position = Vector2(602, 699)
 scale = Vector2(1.4, 1.4)
+
+[node name="Area2D" parent="." unique_id=330003741 node_paths=PackedStringArray("dart_ui") instance=ExtResource("15_ru0d3")]
+position = Vector2(392, 427)
+scale = Vector2(1.946785, 5.14788)
+dart_ui = NodePath("../CanvasLayer")
+
+[node name="CanvasLayer" parent="." unique_id=787037077 instance=ExtResource("16_fhklm")]
+visible = false
+offset = Vector2(367.995, 308.86)
+scale = Vector2(0.205, 0.205)
+transform = Transform2D(0.205, 0, 0, 0.205, 367.995, 308.86)
 
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton" to="." method="_on_save_score_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://eod5e1edk8fi"]
+
+[ext_resource type="Script" uid="uid://ck3kssfhhgwhd" path="res://skrypty/dart_ui.gd" id="1_phwd8"]
+
+[node name="DartUI" type="CanvasLayer" unique_id=787037077]
+script = ExtResource("1_phwd8")
+
+[node name="Panel" type="Panel" parent="." unique_id=1237077333]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -65.150024
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(5.2504735, 6.3302298)
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=1111964226]
+layout_mode = 0
+offset_left = -1.0967255e-05
+offset_top = -38.525543
+offset_right = 52.99999
+offset_bottom = -15.525543
+scale = Vector2(0.7573102, 1.6998396)
+text = "Rzutki!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=328870668]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.5718864, 0.52067775)
+
+[node name="Dart1Label" type="Label" parent="Panel/VBoxContainer" unique_id=1201953922]
+layout_mode = 2
+
+[node name="Dart2Label" type="Label" parent="Panel/VBoxContainer" unique_id=1804379961]
+layout_mode = 2
+
+[node name="Dart3Label" type="Label" parent="Panel/VBoxContainer" unique_id=2012640277]
+layout_mode = 2
+
+[node name="TotalLabel" type="Label" parent="Panel" unique_id=728482641]
+layout_mode = 0
+offset_left = 0.17955557
+offset_top = 39.972515
+offset_right = 91.17956
+offset_bottom = 62.972515
+scale = Vector2(0.9676612, 0.9676612)
+text = "Suma: 0 pkt"
+
+[node name="HintLabel" type="Label" parent="Panel" unique_id=156260677]
+layout_mode = 0
+offset_left = 0.35911113
+offset_top = 59.32572
+offset_right = 69.35911
+offset_bottom = 82.32572
+scale = Vector2(0.8382048, 0.8954119)
+text = "[E] Rzuć !"

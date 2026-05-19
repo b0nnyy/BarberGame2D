@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bjhwmkwmbryoo"]
+
+[ext_resource type="Script" uid="uid://c2mchyxr21a7p" path="res://skrypty/dartboard.gd" id="1_ss55p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1u7n"]
+
+[node name="Area2D" type="Area2D" unique_id=330003741 groups=["Interactable"]]
+script = ExtResource("1_ss55p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055592763]
+shape = SubResource("RectangleShape2D_m1u7n")
