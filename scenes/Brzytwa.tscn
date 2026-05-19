@@ -6,6 +6,7 @@
 radius = 19.026299
 
 [node name="Brzytwa" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+scale = Vector2(0.7157755, 0.7157755)
 
 [node name="Brzytwa" type="Sprite2D" parent="." unique_id=712987387]
 texture = ExtResource("1_nfg71")

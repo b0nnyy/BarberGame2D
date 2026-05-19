@@ -16,7 +16,7 @@ bg_color = Color(1.7296989e-08, 0.054266304, 0.021945696, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65n15"]
 bg_color = Color(3.080368e-06, 0.7255603, 0.19678387, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=1059542811 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1059542811 groups=["Player"]]
 z_index = 2
 script = ExtResource("1_eovys")
 

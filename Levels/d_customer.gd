@@ -245,6 +245,7 @@ func finish_and_leave():
 	request_icon.visible = false
 	patience_bar.visible = false
 
+	GameManager.add_score(patience / 10)
 	show_score_popup()
 
 	if target_seat:

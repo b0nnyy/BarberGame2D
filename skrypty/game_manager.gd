@@ -13,8 +13,12 @@ func lose_life():
 
 	lives -= 1
 
-	if lives <= 0:
+	var player = get_tree().get_first_node_in_group("Player")
 
+	if player:
+		player.update_hearts()
+
+	if lives <= 0:
 		get_tree().current_scene.show_game_over(score)
 
 func trigger_game_over():

@@ -65,5 +65,5 @@ texture = ExtResource("6_0tahi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=162865993]
 avoidance_enabled = true
-radius = 8.0
+radius = 40.0
 neighbor_distance = 30.0
