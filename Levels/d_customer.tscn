@@ -48,7 +48,7 @@ shape = SubResource("CircleShape2D_0tahi")
 disabled = true
 
 [node name="ItemSlot" type="Marker2D" parent="." unique_id=425182007]
-position = Vector2(0, -48)
+position = Vector2(0, -40)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1036294321 groups=["Interactable"]]
 
