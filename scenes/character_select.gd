@@ -1,81 +1,59 @@
 extends Control
 
-@onready var preview_sprite = $Preview/AnimatedSprite2D
-
-var wybrana_postac = ""
-
 var characters = {
-	"Lukasz": preload("res://Characters/lukasz_frames.tres"),
-	"Patryk": preload("res://Characters/Patryk_frames.tres"),
-	"Shimmy": preload("res://Characters/Shimmy_frames.tres"),
-	"Igor": preload("res://Characters/Igor_frames.tres"),
-	"LukaszB": preload("res://Characters/LukaszB_frames.tres")
+	"Lukasz":  preload("res://Characters/lukasz_frames.tres"),
+	"LukaszB": preload("res://Characters/LukaszB_frames.tres"),
+	"Patryk":  preload("res://Characters/Patryk_frames.tres"),
+	"Shimmy":  preload("res://Characters/Shimmy_frames.tres"),
+	"Igor":    preload("res://Characters/Igor_frames.tres"),
 }
 
+var character_order = ["Lukasz", "LukaszB", "Patryk", "Shimmy", "Igor"]
+
+@onready var hbox = $HBoxContainer
+
 func _ready():
-	preview_sprite.visible = false
+	# usuń stare karty jeśli zostały w edytorze
+	for child in hbox.get_children():
+		child.queue_free()
+	
+	for char_name in character_order:
+		var card = _make_card(char_name)
+		hbox.add_child(card)
+	
+	hbox.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	hbox.offset_top = -800
+	hbox.offset_bottom = -500
+	hbox.offset_left = 0
+	hbox.offset_right = -1500
+	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
 
-	$VBoxContainer/LukaszB.pressed.connect(func(): select_character("LukaszB"))
-	$VBoxContainer/Patryk.pressed.connect(func(): select_character("Patryk"))
-	$VBoxContainer/Shimmy.pressed.connect(func(): select_character("Shimmy"))
-	$VBoxContainer/Igor.pressed.connect(func(): select_character("Igor"))
-	$VBoxContainer/Lukasz.pressed.connect(func(): select_character("Lukasz"))
+func _make_card(char_name: String) -> VBoxContainer:
+	var card = VBoxContainer.new()
+	card.alignment = BoxContainer.ALIGNMENT_CENTER
+	card.add_theme_constant_override("separation", 16)
+	card.custom_minimum_size = Vector2(160, 240)
 
+	var frames = characters[char_name]
+	var texture = frames.get_frame_texture("idle_down", 0)
 
-func select_character(char_name: String):
-	if not characters.has(char_name):
-		print("Brak postaci: ", char_name)
-		return
+	var preview = TextureRect.new()
+	preview.texture = texture
+	preview.custom_minimum_size = Vector2(140, 180)
+	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	preview.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	card.add_child(preview)
 
-	wybrana_postac = char_name
+	var btn = Button.new()
+	btn.text = char_name
+	btn.custom_minimum_size = Vector2(140, 44)
+	btn.pressed.connect(func(): _start_game(char_name))
+	card.add_child(btn)
 
-	preview_sprite.visible = true
-	preview_sprite.sprite_frames = characters[char_name]
-	preview_sprite.play("idle_down")
-	preview_sprite.scale = Vector2(3, 3)
+	return card
 
-	print("Wybrano postać: ", wybrana_postac)
-
-
-func _on_LukaszB_pressed():
-	select_character("LukaszB")
-
-func _on_lukasz_b_pressed():
-	select_character("LukaszB")
-
-func _on_Patryk_pressed():
-	select_character("Patryk")
-
-func _on_patryk_pressed():
-	select_character("Patryk")
-
-func _on_Shimmy_pressed():
-	select_character("Shimmy")
-
-func _on_shimmy_pressed():
-	select_character("Shimmy")
-
-func _on_Igor_pressed():
-	select_character("Igor")
-
-func _on_igor_pressed():
-	select_character("Igor")
-
-func _on_Lukasz_pressed():
-	select_character("Lukasz")
-
-func _on_lukasz_pressed():
-	select_character("Lukasz")
-
-
-func _on_start_pressed():
+func _start_game(char_name: String):
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
-
-	if wybrana_postac == "":
-		print("Najpierw wybierz postać!")
-		return
-
-	GameData.wybrana_postac = wybrana_postac
-	print("Start gry z postacią: ", wybrana_postac)
-
+	GameData.wybrana_postac = char_name
 	get_tree().change_scene_to_file("res://Levels/d_level_salon_01.tscn")

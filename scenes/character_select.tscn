@@ -1,16 +1,8 @@
 [gd_scene format=3 uid="uid://dqhe7f6uf1jm4"]
 
 [ext_resource type="Script" uid="uid://c871e22dw5tvq" path="res://scenes/character_select.gd" id="1_x8mhf"]
-[ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="2_bow2h"]
-[ext_resource type="Texture2D" uid="uid://cw2acf4exyrwk" path="res://Art/icons/ikony menu/PLAY.png" id="3_uxcyu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fa52j"]
-atlas = ExtResource("2_bow2h")
-region = Rect2(28, 15, 71, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wdeo"]
-atlas = ExtResource("3_uxcyu")
-region = Rect2(28, 16, 71, 16)
+[ext_resource type="Texture2D" uid="uid://djw2amxr7gn1k" path="res://Art/icons/ikony menu/LOGO TEKST.png" id="2_bow2h"]
+[ext_resource type="Texture2D" uid="uid://dc0nrqjd5nbag" path="res://Art/icons/ikony menu/LOGO ZNAK.png" id="3_uxcyu"]
 
 [node name="Control" type="Control" unique_id=1198882514]
 layout_mode = 3
@@ -25,56 +17,37 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x8mhf")
 
-[node name="Rozpocznij grę" type="TextureButton" parent="." unique_id=706991784]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1721291087]
 layout_mode = 0
-offset_left = 645.0
-offset_top = 310.0
-offset_right = 973.0
-offset_bottom = 361.0
-texture_normal = SubResource("AtlasTexture_fa52j")
-texture_pressed = SubResource("AtlasTexture_5wdeo")
-stretch_mode = 0
+offset_left = -864.0
+offset_top = -861.0
+offset_right = -824.0
+offset_bottom = -821.0
+scale = Vector2(95.086334, 75.78845)
+color = Color(0.34781694, 0.34781697, 0.3478169, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1484358850]
-layout_mode = 0
-offset_left = 9.0
-offset_top = -9.0
-offset_right = 337.0
-offset_bottom = 639.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1298886613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.3629775, 2.3629775)
+alignment = 1
 
-[node name="Wybierz postac" type="Label" parent="VBoxContainer" unique_id=830800669]
-layout_mode = 2
-text = "Wybierz postać"
+[node name="LogoTekst" type="Sprite2D" parent="." unique_id=2115232094]
+position = Vector2(1358, 118.00001)
+scale = Vector2(12.608521, 12.608521)
+texture = ExtResource("2_bow2h")
 
-[node name="LukaszB" type="Button" parent="VBoxContainer" unique_id=2106338220]
-layout_mode = 2
-text = "Lukasz Boss"
-
-[node name="Patryk" type="Button" parent="VBoxContainer" unique_id=245453844]
-layout_mode = 2
-text = "Patryk"
-
-[node name="Shimmy" type="Button" parent="VBoxContainer" unique_id=377643505]
-layout_mode = 2
-text = "Shimmy"
-
-[node name="Igor" type="Button" parent="VBoxContainer" unique_id=1345355498]
-layout_mode = 2
-text = "Igor"
-
-[node name="Lukasz" type="Button" parent="VBoxContainer" unique_id=779339517]
-layout_mode = 2
-text = "Lukasz"
-
-[node name="Preview" type="Node2D" parent="." unique_id=662807619]
-position = Vector2(468, 129)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Preview" unique_id=1138444018]
-animation = &""
-
-[connection signal="pressed" from="Rozpocznij grę" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/LukaszB" to="." method="_on_lukasz_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/Patryk" to="." method="_on_Patryk_pressed"]
-[connection signal="pressed" from="VBoxContainer/Shimmy" to="." method="_on_Shimmy_pressed"]
-[connection signal="pressed" from="VBoxContainer/Igor" to="." method="_on_Igor_pressed"]
-[connection signal="pressed" from="VBoxContainer/Lukasz" to="." method="_on_lukasz_pressed"]
+[node name="LogoZnak" type="Sprite2D" parent="." unique_id=2119738695]
+position = Vector2(679.00006, 129)
+scale = Vector2(6.7187734, 6.7187734)
+texture = ExtResource("3_uxcyu")
