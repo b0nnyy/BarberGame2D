@@ -38,10 +38,12 @@ var last_direction = "down"
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
-
 	request_icon.visible = false
 	score_popup.visible = false
-
+	reaction_icon.visible = false
+	
+	request_icon.position = Vector2(0, -40)
+	
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
 
@@ -202,20 +204,16 @@ func show_service_icon():
 			print("Nieznana usługa: ", requested_service)
 
 func take_item(incoming_item):
-
 	if current_state != CustomerState.WAITING:
 		return
 
 	var item_name = incoming_item.name.to_lower()
-
 	var is_correct = false
 
 	if requested_service == "haircut" and item_name.contains("nozyczki"):
 		is_correct = true
-
 	elif requested_service == "beard" and item_name.contains("brzytwa"):
 		is_correct = true
-
 	elif requested_service == "golarka" and item_name.contains("golarka"):
 		is_correct = true
 
@@ -241,7 +239,6 @@ func perform_work_step():
 		finish_and_leave()
 
 func finish_and_leave():
-
 	current_work_progress = 0
 
 	request_icon.visible = false
@@ -250,12 +247,18 @@ func finish_and_leave():
 	GameManager.add_score(patience / 10)
 	show_score_popup()
 
+ 
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.held_item:
+		if player.held_item.has_method("return_home"):
+			player.held_item.return_home()
+		player.held_item = null
+
 	if target_seat:
 		target_seat.release()
 		target_seat = null
 
 	current_state = CustomerState.EXITING
-
 	set_target(exit_position)
 
 func show_score_popup():

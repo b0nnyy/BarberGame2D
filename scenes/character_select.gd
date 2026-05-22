@@ -13,7 +13,6 @@ var character_order = ["Lukasz", "LukaszB", "Patryk", "Shimmy", "Igor"]
 @onready var hbox = $HBoxContainer
 
 func _ready():
-	# usuń stare karty jeśli zostały w edytorze
 	for child in hbox.get_children():
 		child.queue_free()
 	

@@ -51,16 +51,13 @@ func throw_dart():
 	var throw_anim = "throw_" + player.last_direction
 	if player.animated_sprite.sprite_frames.has_animation(throw_anim):
 		player.animated_sprite.play(throw_anim)
-		# poczekaj aż animacja się skończy
 		await player.animated_sprite.animation_finished
 	else:
-		# brak animacji rzutu - czekamy chwilę zamiast
 		await get_tree().create_timer(0.4).timeout
 	
-	# wróć do idle
-	player.animated_sprite.play("idle_" + player.last_direction)
+
+	player.animated_sprite.play("idle_down" + player.last_direction)
 	
-	# losuj
 	var result = dartboard.weighted_random()
 	total_points += result["points"]
 	dart_labels[darts_thrown].text = "Rzut %d: %s — %d pkt" % [
@@ -78,4 +75,4 @@ func throw_dart():
 
 func close():
 	visible = false
-	player.set_physics_process(true)  # odblokuj ruch
+	player.set_physics_process(true)  

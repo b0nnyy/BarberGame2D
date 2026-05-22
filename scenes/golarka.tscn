@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bdjeqpyp472ig"]
 
 [ext_resource type="Texture2D" uid="uid://py7jchys7t2m" path="res://Art/icons/golarka.png" id="1_4lpj5"]
+[ext_resource type="Script" uid="uid://v6et640bcmij" path="res://skrypty/golarka.gd" id="1_t8s08"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lpj5"]
 radius = 16.0
 
 [node name="Golarka" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+script = ExtResource("1_t8s08")
 
 [node name="Golarka" type="Sprite2D" parent="." unique_id=1863550462]
 position = Vector2(-2, -1)

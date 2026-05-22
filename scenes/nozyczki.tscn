@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://css7jmvro1tuj"]
 
 [ext_resource type="Texture2D" uid="uid://b8cqr7t2xymwb" path="res://Art/icons/nozyczki.png" id="1_1j2dh"]
+[ext_resource type="Script" uid="uid://u5hraxq6ls44" path="res://skrypty/nozyczki.gd" id="1_adhvy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1j2dh"]
 radius = 11.0
 
 [node name="Nozyczki" type="Area2D" unique_id=1586529084 groups=["Interactable"]]
+script = ExtResource("1_adhvy")
 
 [node name="Nozyczki" type="Sprite2D" parent="." unique_id=2118391727]
 texture = ExtResource("1_1j2dh")
