@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://py7jchys7t2m" path="res://Art/icons/golarka.png" id="4_s7aux"]
 [ext_resource type="SpriteFrames" uid="uid://ckqxyk1wjpnha" path="res://Characters/klient3_frames.tres" id="5_0tahi"]
 [ext_resource type="SpriteFrames" uid="uid://545aq7rq4u3n" path="res://Characters/klient1_frames.tres" id="5_du8na"]
+[ext_resource type="Texture2D" uid="uid://blywxtybglivs" path="res://Art/icons/ikony/HAPPY FACE.png" id="5_nchvu"]
 [ext_resource type="Texture2D" uid="uid://c5wx445tbj0oc" path="res://Art/icons/ikony/COIN.png" id="6_0tahi"]
+[ext_resource type="Texture2D" uid="uid://jmtkb3it6k3h" path="res://Art/icons/ikony/ANGRY FACE.png" id="6_40mti"]
 [ext_resource type="SpriteFrames" uid="uid://d4ilog146s651" path="res://Characters/klient2_frames.tres" id="6_e7e6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tahi"]
@@ -20,6 +22,8 @@ script = ExtResource("1_04txp")
 haircut_icon = ExtResource("2_453eh")
 beard_icon = ExtResource("3_0tahi")
 golarka_icon = ExtResource("4_s7aux")
+happy_icon = ExtResource("5_nchvu")
+angry_icon = ExtResource("6_40mti")
 haircut_frames = ExtResource("5_du8na")
 beard_frames = ExtResource("6_e7e6n")
 golarka_frames = ExtResource("5_0tahi")
@@ -36,9 +40,9 @@ position = Vector2(0, -60)
 
 [node name="PatienceBar" type="ProgressBar" parent="." unique_id=108920452]
 offset_left = -15.0
-offset_top = -30.0
+offset_top = -22.0
 offset_right = 15.0
-offset_bottom = -25.0
+offset_bottom = -17.0
 value = 100.0
 show_percentage = false
 
@@ -48,7 +52,7 @@ shape = SubResource("CircleShape2D_0tahi")
 disabled = true
 
 [node name="ItemSlot" type="Marker2D" parent="." unique_id=425182007]
-position = Vector2(0, -40)
+position = Vector2(0, -34)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1036294321 groups=["Interactable"]]
 
@@ -67,3 +71,6 @@ texture = ExtResource("6_0tahi")
 avoidance_enabled = true
 radius = 40.0
 neighbor_distance = 30.0
+
+[node name="ReactionIcon" type="Sprite2D" parent="." unique_id=519309908]
+position = Vector2(0, -39.99)

@@ -6,7 +6,8 @@ extends CharacterBody2D
 @export var haircut_icon: Texture2D
 @export var beard_icon: Texture2D
 @export var golarka_icon: Texture2D
-
+@export var happy_icon: Texture2D
+@export var angry_icon: Texture2D
 @export var haircut_frames: SpriteFrames
 @export var beard_frames: SpriteFrames
 @export var golarka_frames: SpriteFrames
@@ -29,6 +30,7 @@ var has_already_failed := false
 
 var last_direction = "down"
 
+@onready var reaction_icon = $ReactionIcon
 @onready var request_icon = $RequestIcon
 @onready var patience_bar = $PatienceBar
 @onready var score_popup = $ScorePopup
@@ -96,15 +98,15 @@ func leave_angry():
 
 	request_icon.visible = false
 	patience_bar.visible = false
+	
+	show_reaction(false)
 
 	if target_seat:
 		target_seat.release()
 		target_seat = null
 
 	GameManager.lose_life()
-
 	current_state = CustomerState.EXITING
-
 	set_target(exit_position)
 
 func update_patience(delta):
@@ -244,7 +246,7 @@ func finish_and_leave():
 
 	request_icon.visible = false
 	patience_bar.visible = false
-
+	show_reaction(true)
 	GameManager.add_score(patience / 10)
 	show_score_popup()
 
@@ -312,3 +314,16 @@ func update_animation(direction: Vector2):
 
 	if animated_sprite.animation != anim:
 		animated_sprite.play(anim)
+
+func show_reaction(happy: bool):
+	reaction_icon.texture = happy_icon if happy else angry_icon
+	reaction_icon.visible = true
+	reaction_icon.modulate.a = 1.0
+	reaction_icon.scale = Vector2(1, 1)
+	var t = create_tween()
+	t.tween_property(reaction_icon, "scale", Vector2(1.3, 1.3), 0.15)
+	t.tween_property(reaction_icon, "scale", Vector2(1.0, 1.0), 0.15)
+	t.tween_interval(0.8)
+	t.tween_property(reaction_icon, "modulate:a", 0.0, 0.4)
+	await t.finished
+	reaction_icon.visible = false
