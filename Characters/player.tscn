@@ -72,10 +72,11 @@ texture = ExtResource("3_vb825")
 position = Vector2(0, -50)
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1716929620]
-scale = Vector2(0.9746552, 0.7493892)
+scale = Vector2(1.1499702, 1.0971378)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1631153468]
 position = Vector2(0, 8)
+scale = Vector2(0.96199006, 0.6367158)
 shape = SubResource("RectangleShape2D_65n15")
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=1073406243]

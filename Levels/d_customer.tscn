@@ -40,9 +40,9 @@ position = Vector2(0, -60)
 
 [node name="PatienceBar" type="ProgressBar" parent="." unique_id=108920452]
 offset_left = -15.0
-offset_top = -22.0
+offset_top = -23.425
 offset_right = 15.0
-offset_bottom = -17.0
+offset_bottom = -18.425
 value = 100.0
 show_percentage = false
 
@@ -58,6 +58,7 @@ position = Vector2(0, -27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=444727056]
 position = Vector2(0, 9)
+scale = Vector2(1.2602267, 1.1093758)
 shape = SubResource("RectangleShape2D_s7aux")
 
 [node name="ScorePopup" type="TextureRect" parent="." unique_id=1872847750]

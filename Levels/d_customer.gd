@@ -112,9 +112,17 @@ func leave_angry():
 	set_target(exit_position)
 
 func update_patience(delta):
-
 	patience -= patience_decay * delta
 	patience_bar.value = patience
+	
+	var fill_style = patience_bar.get_theme_stylebox("fill").duplicate()
+	if patience > 60:
+		fill_style.bg_color = Color(0.2, 0.8, 0.2)  
+	elif patience > 30:
+		fill_style.bg_color = Color(0.9, 0.7, 0.0)  
+	else:
+		fill_style.bg_color = Color(0.8, 0.2, 0.2)  
+	patience_bar.add_theme_stylebox_override("fill", fill_style)
 
 	if patience < 40 and not is_angry:
 		become_angry()
