@@ -9,6 +9,7 @@ extends Control
 @onready var dzwieki_icon = $VBoxContainer/SfxRow/DzwiekiIcon
 
 
+
 func _ready():
 	_update_icons()
 
@@ -17,6 +18,12 @@ func _ready():
 
 	var sfx_bus = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_mute(sfx_bus, not GameSettings.sfx_enabled)
+
+	if not muzyka_button.pressed.is_connected(_on_Muzyka_pressed):
+		muzyka_button.pressed.connect(_on_Muzyka_pressed)
+
+	if not dzwieki_button.pressed.is_connected(_on_Dzwieki_pressed):
+		dzwieki_button.pressed.connect(_on_Dzwieki_pressed)
 
 
 # kliknięcie MUZYKA
@@ -61,6 +68,7 @@ func _update_icons():
 		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUNDOFF.png")
 
 
+# POWRÓT DO MENU
 func _on_Powrot_pressed():
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -1,10 +1,7 @@
 extends Node
 
-func _ready():
-
-	print("Wybrana postać to: " + GameData.wybrana_postac)
-
 @onready var pause_menu = $UI/PauseMenu
+@onready var settings_menu = $UI/SettingsMenu
 @onready var game_over_menu = $UI/GameOverMenu
 @onready var score_label = $UI/GameOverMenu/Panel/VBoxContainer/ScoreLabel
 @onready var name_input = $UI/GameOverMenu/Panel/VBoxContainer/NameInput
@@ -12,29 +9,38 @@ func _ready():
 @onready var fade_layer = $UI/FadeLayer
 var score_saved := false
 
+func _ready():
+	print("Wybrana postać to: " + GameData.wybrana_postac)
+	pause_menu.resume_pressed.connect(_resume_game)
+	pause_menu.settings_pressed.connect(_open_settings)
+	pause_menu.back_pressed.connect(_close_settings)
 
 
-func _input(event):
-
-	if event.is_action_pressed("ui_cancel"):
-
-		if get_tree().paused:
-			_resume_game()
-		else:
-			_pause_game()
 
 
-func _pause_game():
 
+func _unhandled_input(event):
+
+	if not event.is_action_pressed("ui_cancel"):
+		return
+
+	if settings_menu.visible:
+		_close_settings()
+		return
+
+	if pause_menu.visible:
+		_resume_game()
+		return
+
+	_open_pause()
+
+
+func _open_pause():
 	get_tree().paused = true
-	
 	pause_menu.visible = true
+	settings_menu.visible = false
 
 
-func _resume_game():
-
-	get_tree().paused = false
-	pause_menu.visible = false
 
 func show_game_over(score):
 	score_saved = false
@@ -92,3 +98,21 @@ func _on_save_score_button_pressed():
 
 	name_input.visible = false
 	save_button.visible = false
+
+func _open_settings():
+	pause_menu.visible = false
+	settings_menu.visible = true
+
+
+func _close_settings():
+	settings_menu.visible = false
+	pause_menu.visible = true
+
+func _resume_game():
+	get_tree().paused = false
+	pause_menu.visible = false
+	settings_menu.visible = false
+
+func _on_back_button_pressed():
+	_close_settings()
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")

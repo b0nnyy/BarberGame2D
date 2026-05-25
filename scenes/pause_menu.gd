@@ -1,21 +1,25 @@
 extends Control
 
+signal resume_pressed
+signal settings_pressed
+signal back_pressed
+
 
 func _ready():
 	visible = false
 
 
+
 func _on_Kontynuuj_pressed():
 
-	get_tree().paused = false
-	visible = false
-
+	resume_pressed.emit()
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 
 func _on_Ustawienia_pressed():
 
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/ustawienia.tscn")
-
+	settings_pressed.emit()
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 func _on_Wyjdz_pressed():
 
-	get_tree().quit()
+	back_pressed.emit()
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")

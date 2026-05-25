@@ -30,7 +30,7 @@ atlas = ExtResource("4_5w6ei")
 region = Rect2(29, 80, 71, 16)
 
 [node name="PauseMenu" type="Control" unique_id=692993039]
-process_mode = 3
+process_mode = 2
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,6 +69,7 @@ texture_normal = SubResource("AtlasTexture_jiu6o")
 texture_pressed = SubResource("AtlasTexture_40atx")
 
 [node name="Ustawienia" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1237323808]
+process_mode = 2
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_yx35g")
 texture_pressed = SubResource("AtlasTexture_vd2mf")

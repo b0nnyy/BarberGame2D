@@ -11,8 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://chnqtag5krrx4" path="res://scenes/Brzytwa.tscn" id="8_hisqs"]
 [ext_resource type="Script" uid="uid://b4tcev7x0j5vm" path="res://Levels/ui_score.gd" id="9_sluam"]
 [ext_resource type="PackedScene" uid="uid://ci1geixxeyna7" path="res://scenes/PauseMenu.tscn" id="11_by3im"]
+[ext_resource type="Texture2D" uid="uid://dwk6exrk8lt5l" path="res://Art/icons/ikony menu/SETTINGS BUTTONS.png" id="12_hvxqv"]
+[ext_resource type="Script" uid="uid://eihfha7n240y" path="res://ustawienia.gd" id="12_iswe0"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="12_k6m37"]
+[ext_resource type="Texture2D" uid="uid://beg2vg8rleusa" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCM.png" id="13_2o7ug"]
 [ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="13_yrxkd"]
+[ext_resource type="Texture2D" uid="uid://dwe1jln6xh0ak" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCS.png" id="14_2o7ug"]
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
 [ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
@@ -70,6 +74,30 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_fhklm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o7ug"]
+atlas = ExtResource("12_hvxqv")
+region = Rect2(29, 79, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iswe0"]
+atlas = ExtResource("13_2o7ug")
+region = Rect2(29, 80, 71, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv03h"]
+atlas = ExtResource("12_hvxqv")
+region = Rect2(29, 47, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh0hh"]
+atlas = ExtResource("14_2o7ug")
+region = Rect2(29, 48, 71, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs06j"]
+atlas = ExtResource("12_k6m37")
+region = Rect2(29, 79, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eedq8"]
+atlas = ExtResource("13_yrxkd")
+region = Rect2(29, 80, 71, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnvy2"]
 atlas = ExtResource("12_k6m37")
@@ -188,6 +216,7 @@ scale = Vector2(1.4357617, 1.4357617)
 text = "Score : 0"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=71915982]
+process_mode = 2
 
 [node name="PauseMenu" parent="UI" unique_id=692993039 instance=ExtResource("11_by3im")]
 visible = false
@@ -207,6 +236,58 @@ grow_vertical = 2
 scale = Vector2(0.998646, 1.0069817)
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="SettingsMenu" type="Control" parent="UI" unique_id=1355666337]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_iswe0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SettingsMenu" unique_id=1541860427]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 400.0
+offset_right = 194.0
+offset_bottom = 459.0
+scale = Vector2(4, 4)
+alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="UI/SettingsMenu/VBoxContainer" unique_id=1014063654]
+process_mode = 2
+layout_mode = 2
+
+[node name="Muzyka" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer/MusicRow" unique_id=187725183]
+process_mode = 2
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2o7ug")
+texture_pressed = SubResource("AtlasTexture_iswe0")
+
+[node name="MuzykaIcon" type="TextureRect" parent="UI/SettingsMenu/VBoxContainer/MusicRow" unique_id=93869490]
+process_mode = 2
+layout_mode = 2
+
+[node name="SfxRow" type="HBoxContainer" parent="UI/SettingsMenu/VBoxContainer" unique_id=1049085431]
+process_mode = 2
+layout_mode = 2
+
+[node name="Dzwieki" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer/SfxRow" unique_id=2053315173]
+process_mode = 2
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bv03h")
+texture_pressed = SubResource("AtlasTexture_qh0hh")
+
+[node name="DzwiekiIcon" type="TextureRect" parent="UI/SettingsMenu/VBoxContainer/SfxRow" unique_id=1004736843]
+process_mode = 2
+layout_mode = 2
+
+[node name="Powrot" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=1488887540]
+process_mode = 2
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_hs06j")
+texture_pressed = SubResource("AtlasTexture_eedq8")
 
 [node name="GameOverMenu" type="Control" parent="UI" unique_id=1688469434]
 process_mode = 2
@@ -278,6 +359,7 @@ offset = Vector2(367.995, 308.86)
 scale = Vector2(0.205, 0.205)
 transform = Transform2D(0.205, 0, 0, 0.205, 367.995, 308.86)
 
+[connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Powrot" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton" to="." method="_on_save_score_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
