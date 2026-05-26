@@ -179,6 +179,9 @@ func sit_down():
 		target_seat.occupy(self)
 
 	current_state = CustomerState.SEATED
+	
+	if animated_sprite.sprite_frames.has_animation("sit_front"):
+		animated_sprite.play("sit_front")
 
 	show_service_icon()
 
@@ -292,32 +295,24 @@ func show_score_popup():
 
 func update_animation(direction: Vector2):
 
+	if current_state == CustomerState.WAITING or current_state == CustomerState.SEATED:
+		return
 	if direction == Vector2.ZERO:
-
 		animated_sprite.play("idle_" + last_direction)
 		return
-
 	var anim = ""
-
 	if abs(direction.y) > abs(direction.x):
-
 		if direction.y > 0:
-
 			anim = "walk_down"
 			last_direction = "down"
-
 		else:
-
 			anim = "walk_up"
 			last_direction = "up"
-
 	else:
-
 		if direction.x > 0:
 
 			anim = "walk_right"
 			last_direction = "right"
-
 		else:
 
 			anim = "walk_left"
