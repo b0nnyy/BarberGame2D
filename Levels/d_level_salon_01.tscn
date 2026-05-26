@@ -99,6 +99,12 @@ region = Rect2(29, 79, 71, 17)
 atlas = ExtResource("13_yrxkd")
 region = Rect2(29, 80, 71, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtw2f"]
+load_path = "res://.godot/imported/LEADERBOARD.png-e20c256b131ce54ff7a4a3c5bb0858d8.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iswe0"]
+texture = SubResource("CompressedTexture2D_rtw2f")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnvy2"]
 atlas = ExtResource("12_k6m37")
 region = Rect2(29, 79, 71, 17)
@@ -291,13 +297,31 @@ texture_pressed = SubResource("AtlasTexture_eedq8")
 
 [node name="GameOverMenu" type="Control" parent="UI" unique_id=1688469434]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LeaderboardPanel" type="Panel" parent="UI/GameOverMenu" unique_id=631882105]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = -11.0
+offset_right = 1976.0
+offset_bottom = 1042.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_iswe0")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameOverMenu/LeaderboardPanel" unique_id=1262098440]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 144
+theme_override_constants/margin_top = 172
+
+[node name="ScoresContainer" type="VBoxContainer" parent="UI/GameOverMenu/LeaderboardPanel/MarginContainer" unique_id=2011193794]
+layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="Panel" type="Panel" parent="UI/GameOverMenu" unique_id=390885368]
 layout_mode = 1

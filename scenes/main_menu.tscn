@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bkng0dhca31bx" path="res://scenes/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="2_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cw2acf4exyrwk" path="res://Art/icons/ikony menu/PLAY.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://byvekxkurbdm" path="res://Art/menu/BACKGROUND.png" id="2_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c4gl2sfc55hnd" path="res://Art/icons/ikony menu/MENU BUTTONS.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="4_8ln24"]
 
@@ -22,6 +23,12 @@ region = Rect2(29, 47, 71, 17)
 atlas = ExtResource("4_8ln24")
 region = Rect2(29, 48, 71, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtw2f"]
+load_path = "res://.godot/imported/LEADERBOARD.png-e20c256b131ce54ff7a4a3c5bb0858d8.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = SubResource("CompressedTexture2D_rtw2f")
+
 [node name="Control" type="Control" unique_id=850465137]
 layout_mode = 3
 anchors_preset = 8
@@ -34,6 +41,16 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 script = ExtResource("1_l6cm7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=782328299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rtw2f")
+stretch_mode = 6
 
 [node name="grafika start" type="TextureButton" parent="." unique_id=2044420390]
 layout_mode = 1
@@ -62,7 +79,27 @@ texture_normal = SubResource("AtlasTexture_rtw2f")
 texture_pressed = SubResource("AtlasTexture_oa1go")
 stretch_mode = 0
 
+[node name="LeaderboardPanel" type="Panel" parent="." unique_id=1941251590]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -522.0
+offset_right = 956.0
+offset_bottom = 531.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbmy8")
+
+[node name="MarginContainer" type="MarginContainer" parent="LeaderboardPanel" unique_id=113535835]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 144
+theme_override_constants/margin_top = 172
+
+[node name="ScoresContainer" type="VBoxContainer" parent="LeaderboardPanel/MarginContainer" unique_id=647443491]
+layout_mode = 2
+theme_override_constants/separation = 12
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=139566373]
+visible = false
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5

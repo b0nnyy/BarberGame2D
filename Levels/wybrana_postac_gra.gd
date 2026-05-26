@@ -1,5 +1,7 @@
 extends Node
 
+@onready var leaderboard_panel = $UI/GameOverMenu/LeaderboardPanel
+@onready var scores_container = $UI/GameOverMenu/LeaderboardPanel/MarginContainer/ScoresContainer
 @onready var pause_menu = $UI/PauseMenu
 @onready var settings_menu = $UI/SettingsMenu
 @onready var game_over_menu = $UI/GameOverMenu
@@ -59,6 +61,8 @@ func show_game_over(score):
 	await t.finished
 
 	game_over_menu.visible = true
+	show_leaderboard()
+	leaderboard_panel.visible = true
 
 	name_input.visible = true
 	save_button.visible = true
@@ -116,3 +120,29 @@ func _resume_game():
 func _on_back_button_pressed():
 	_close_settings()
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+
+func show_leaderboard():
+
+	for child in scores_container.get_children():
+		child.queue_free()
+
+	var max_scores = min(10, LeaderboardManager.scores.size())
+
+	for i in range(max_scores):
+
+		var entry = LeaderboardManager.scores[i]
+
+		var label = Label.new()
+		label.text = str(i + 1) + ". " + entry["name"] + " - " + str(entry["score"]) + " pkt"
+
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+		# TOP 3
+		if i == 0:
+			label.add_theme_color_override("font_color", Color.GOLD)
+		elif i == 1:
+			label.add_theme_color_override("font_color", Color.SILVER)
+		elif i == 2:
+			label.add_theme_color_override("font_color", Color(0.8, 0.5, 0.2))
+
+		scores_container.add_child(label)
