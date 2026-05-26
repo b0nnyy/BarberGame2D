@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chnqtag5krrx4"]
 
-[ext_resource type="Texture2D" uid="uid://c8sroueh7bxy7" path="res://Art/icons/brzytwa.png" id="1_nfg71"]
 [ext_resource type="Script" uid="uid://d1068js7nnyuq" path="res://skrypty/brzytwa.gd" id="1_r3r67"]
+[ext_resource type="Texture2D" uid="uid://bps0cta8e67g7" path="res://Art/icons/brzytwa.png" id="2_r3r67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfg71"]
 radius = 19.026299
@@ -11,7 +11,7 @@ scale = Vector2(0.7157755, 0.7157755)
 script = ExtResource("1_r3r67")
 
 [node name="Brzytwa" type="Sprite2D" parent="." unique_id=712987387]
-texture = ExtResource("1_nfg71")
+texture = ExtResource("2_r3r67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1711737721]
 shape = SubResource("CircleShape2D_nfg71")
