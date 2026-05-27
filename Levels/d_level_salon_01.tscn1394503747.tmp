@@ -20,9 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
 [ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
-[ext_resource type="Texture2D" uid="uid://m05wv1b8pamk" path="res://Art/icons/Dartboard icons/10.png" id="20_hs06j"]
-[ext_resource type="Texture2D" uid="uid://utam2ym2xmit" path="res://Art/icons/Dartboard icons/25.png" id="21_eedq8"]
-[ext_resource type="Texture2D" uid="uid://dpx4s5mp6wbq" path="res://Art/icons/Dartboard icons/50.png" id="22_2lios"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ru0d3"]
 vertices = PackedVector2Array(643.3281, 585.6094, 782.5469, 500.53906, 858.9297, 487.8125, 858.03906, 640.64844, 786.4375, 653.77344, 617.46094, 663.2422, 634.96094, 724.9922, 792.60156, 748.5703, 725, 1005.8672, 945.3594, 1008.85156, 943.6094, 1037, 686.7969, 1037, 683.7969, 890, 725, 883.7578, 809.7578, 825.0781, 536.28125, 890, 539.7578, 759.96094, 615.46094, 751.4531, 878, 752.53906, 878, 823.25)
@@ -376,14 +373,10 @@ texture_pressed = SubResource("AtlasTexture_ru0d3")
 position = Vector2(599, 713)
 scale = Vector2(1.4, 1.4)
 
-[node name="Dartboard" parent="." unique_id=330003741 node_paths=PackedStringArray("dart_ui", "result_icon") instance=ExtResource("15_ru0d3")]
+[node name="Dartboard" parent="." unique_id=330003741 node_paths=PackedStringArray("dart_ui") instance=ExtResource("15_ru0d3")]
 position = Vector2(368, 437.00003)
 scale = Vector2(1.946785, 5.14788)
 dart_ui = NodePath("../CanvasLayer")
-result_icon = NodePath("../ResultIcon")
-icon_10 = ExtResource("20_hs06j")
-icon_25 = ExtResource("21_eedq8")
-icon_50 = ExtResource("22_2lios")
 
 [node name="CanvasLayer" parent="." unique_id=787037077 instance=ExtResource("16_fhklm")]
 visible = false
