@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://f53xifiaudxs" path="res://Art/menu/credits/RADEK.png" id="14_8egab"]
 [ext_resource type="Texture2D" uid="uid://bw52n80cdhgyw" path="res://Art/menu/credits/DAWID 2.png" id="15_gw5y6"]
 [ext_resource type="Texture2D" uid="uid://d1m866ox6xlun" path="res://Art/menu/credits/DAWID.png" id="16_svtp6"]
+[ext_resource type="Texture2D" uid="uid://dc0nrqjd5nbag" path="res://Art/icons/ikony menu/LOGO ZNAK.png" id="18_hstxw"]
+[ext_resource type="Texture2D" uid="uid://djw2amxr7gn1k" path="res://Art/icons/ikony menu/LOGO TEKST.png" id="19_8egab"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
 atlas = ExtResource("2_8ln24")
@@ -73,10 +75,10 @@ stretch_mode = 6
 
 [node name="grafika start" type="TextureButton" parent="." unique_id=2044420390]
 layout_mode = 1
-offset_left = -894.0
-offset_top = -350.0
-offset_right = -631.0
-offset_bottom = -292.0
+offset_left = -728.0
+offset_top = -259.0
+offset_right = -465.0
+offset_bottom = -201.0
 scale = Vector2(1.6, 1.6)
 texture_normal = SubResource("AtlasTexture_ekxnf")
 texture_pressed = SubResource("AtlasTexture_bqqt6")
@@ -89,10 +91,10 @@ offset_bottom = 40.0
 
 [node name="grafika ustawienia" type="TextureButton" parent="." unique_id=1652633480]
 layout_mode = 0
-offset_left = -894.0
-offset_top = -212.0
-offset_right = -631.0
-offset_bottom = -156.0
+offset_left = -728.0
+offset_top = -61.0
+offset_right = -465.0
+offset_bottom = -5.0
 scale = Vector2(1.6, 1.6)
 texture_normal = SubResource("AtlasTexture_rtw2f")
 texture_pressed = SubResource("AtlasTexture_oa1go")
@@ -100,20 +102,20 @@ stretch_mode = 0
 
 [node name="CreditsButton" type="TextureButton" parent="." unique_id=2086993075]
 layout_mode = 0
-offset_left = -1060.0
-offset_top = -112.0
-offset_right = -301.0
-offset_bottom = 53.0
+offset_left = -903.0
+offset_top = 227.0
+offset_right = -144.0
+offset_bottom = 392.0
 texture_normal = ExtResource("7_lgwnu")
 texture_pressed = ExtResource("8_flqon")
 stretch_mode = 0
 
 [node name="LeaderboardPanel" type="Panel" parent="." unique_id=1941251590]
 layout_mode = 0
-offset_left = 13.0
-offset_top = -522.0
-offset_right = 956.0
-offset_bottom = 531.0
+offset_left = 22.0
+offset_top = -507.0
+offset_right = 847.0
+offset_bottom = 441.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_tbmy8")
 
 [node name="MarginContainer" type="MarginContainer" parent="LeaderboardPanel" unique_id=113535835]
@@ -255,6 +257,16 @@ text = "Tabela wyników"
 [node name="przycisk ustawienia" type="Button" parent="CenterContainer/VBoxContainer" unique_id=29626590]
 layout_mode = 2
 text = "Ustawienia"
+
+[node name="LogoZnak" type="Sprite2D" parent="." unique_id=485096010]
+position = Vector2(-790.00006, -387)
+scale = Vector2(3.484375, 3.203125)
+texture = ExtResource("18_hstxw")
+
+[node name="LogoTekst" type="Sprite2D" parent="." unique_id=963212938]
+position = Vector2(-505, -380)
+scale = Vector2(4.953125, 6.390625)
+texture = ExtResource("19_8egab")
 
 [connection signal="pressed" from="grafika start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="grafika ustawienia" to="." method="_on_settings_button_pressed"]
