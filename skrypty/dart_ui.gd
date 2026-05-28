@@ -17,7 +17,7 @@ var total_points: int = 0
 var round_done: bool = false
 var throwing: bool = false  
 
-func open(p, board, board_pos: Vector2):
+func open(p, board, _board_pos: Vector2):
 	player = p
 	dartboard = board
 	darts_thrown = 0

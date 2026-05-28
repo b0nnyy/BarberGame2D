@@ -255,7 +255,7 @@ func finish_and_leave():
 	request_icon.visible = false
 	patience_bar.visible = false
 	show_reaction(true)
-	GameManager.add_score(patience / 10)
+	GameManager.add_score(int(patience / 10))
 	show_score_popup()
 
  
