@@ -23,8 +23,8 @@ func _ready():
 	hbox.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	hbox.offset_top = -800
 	hbox.offset_bottom = -500
-	hbox.offset_left = 0
-	hbox.offset_right = -1500
+	hbox.offset_left = 120
+	hbox.offset_right = -1380
 	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
 
 

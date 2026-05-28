@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c871e22dw5tvq" path="res://scenes/character_select.gd" id="1_x8mhf"]
 [ext_resource type="Texture2D" uid="uid://djw2amxr7gn1k" path="res://Art/icons/ikony menu/LOGO TEKST.png" id="2_bow2h"]
 [ext_resource type="Texture2D" uid="uid://dc0nrqjd5nbag" path="res://Art/icons/ikony menu/LOGO ZNAK.png" id="3_uxcyu"]
+[ext_resource type="Texture2D" uid="uid://byvekxkurbdm" path="res://Art/menu/BACKGROUND.png" id="4_uxcyu"]
 
 [node name="Control" type="Control" unique_id=1198882514]
 layout_mode = 3
@@ -26,6 +27,11 @@ offset_bottom = -821.0
 scale = Vector2(95.086334, 75.78845)
 color = Color(0.34781694, 0.34781697, 0.3478169, 1)
 
+[node name="Background" type="Sprite2D" parent="." unique_id=839320986]
+position = Vector2(888.25, 458.12506)
+scale = Vector2(1.0205728, 1.0053241)
+texture = ExtResource("4_uxcyu")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1298886613]
 layout_mode = 1
 anchors_preset = 8
@@ -43,11 +49,11 @@ scale = Vector2(2.3629775, 2.3629775)
 alignment = 1
 
 [node name="LogoTekst" type="Sprite2D" parent="." unique_id=2115232094]
-position = Vector2(1358, 118.00001)
-scale = Vector2(12.608521, 12.608521)
+position = Vector2(1039, 102.00001)
+scale = Vector2(10.843318, 11.1171875)
 texture = ExtResource("2_bow2h")
 
 [node name="LogoZnak" type="Sprite2D" parent="." unique_id=2119738695]
-position = Vector2(679.00006, 129)
-scale = Vector2(6.7187734, 6.7187734)
+position = Vector2(439, 111)
+scale = Vector2(6.0156245, 5.57899)
 texture = ExtResource("3_uxcyu")
