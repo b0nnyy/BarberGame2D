@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://chnqtag5krrx4" path="res://scenes/Brzytwa.tscn" id="8_hisqs"]
 [ext_resource type="Script" uid="uid://b4tcev7x0j5vm" path="res://Levels/ui_score.gd" id="9_sluam"]
 [ext_resource type="PackedScene" uid="uid://ci1geixxeyna7" path="res://scenes/PauseMenu.tscn" id="11_by3im"]
+[ext_resource type="Texture2D" uid="uid://c5wx445tbj0oc" path="res://Art/icons/ikony/COIN.png" id="11_eedq8"]
 [ext_resource type="Texture2D" uid="uid://dwk6exrk8lt5l" path="res://Art/icons/ikony menu/SETTINGS BUTTONS.png" id="12_hvxqv"]
 [ext_resource type="Script" uid="uid://eihfha7n240y" path="res://ustawienia.gd" id="12_iswe0"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="12_k6m37"]
@@ -217,15 +218,23 @@ gizmo_extents = 5.1
 script = ExtResource("9_sluam")
 
 [node name="ScoreLabel" type="Label" parent="UI_score" unique_id=391709054]
-offset_left = 17.0
-offset_top = 82.0
-offset_right = 82.0
-offset_bottom = 105.0
+offset_left = 76.0
+offset_top = 93.0
+offset_right = 141.0
+offset_bottom = 116.0
 scale = Vector2(1.4357617, 1.4357617)
-text = "Score : 0"
+text = "0"
+
+[node name="CoinIcon" type="TextureRect" parent="UI_score" unique_id=534355261]
+offset_left = -4.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 148.0
+texture = ExtResource("11_eedq8")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=71915982]
 process_mode = 2
+visible = false
 
 [node name="FadeLayer" type="ColorRect" parent="UI" unique_id=1964602246]
 process_mode = 3
