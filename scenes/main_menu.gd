@@ -106,3 +106,16 @@ func _on_scores_pressed():
 
 	# pokaz/ukryj tabelę wyników
 	$LeaderboardPanel.visible = !$LeaderboardPanel.visible
+
+func _on_credits_button_pressed():
+
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+
+	$CreditsPanel.visible = true
+
+
+func _on_close_button_pressed():
+
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+
+	$CreditsPanel.visible = false

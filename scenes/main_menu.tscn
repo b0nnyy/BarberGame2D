@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://byvekxkurbdm" path="res://Art/menu/BACKGROUND.png" id="2_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c4gl2sfc55hnd" path="res://Art/icons/ikony menu/MENU BUTTONS.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://b1bjk22ljvrod" path="res://Art/menu/CREDITS.png" id="7_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://rxgyg4djiscg" path="res://Art/menu/credits/MICHAL 2.png" id="7_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://bo3m2beqic5uf" path="res://Art/menu/CREDITS OC.png" id="8_flqon"]
+[ext_resource type="Texture2D" uid="uid://boshbseq6psl7" path="res://Art/menu/credits/MICHAL.png" id="8_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://g8swgqw6w51i" path="res://Art/menu/credits/WIKTORIA 2.png" id="9_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://ddc1pw3bt82r" path="res://Art/menu/credits/WIKTORIA.png" id="10_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://r7grtmjmts0e" path="res://Art/menu/xbutton.png" id="11_rcqid"]
+[ext_resource type="Texture2D" uid="uid://covaa6wnbpknx" path="res://Art/menu/credits/RADEK 2.png" id="13_hstxw"]
+[ext_resource type="Texture2D" uid="uid://f53xifiaudxs" path="res://Art/menu/credits/RADEK.png" id="14_8egab"]
+[ext_resource type="Texture2D" uid="uid://bw52n80cdhgyw" path="res://Art/menu/credits/DAWID 2.png" id="15_gw5y6"]
+[ext_resource type="Texture2D" uid="uid://d1m866ox6xlun" path="res://Art/menu/credits/DAWID.png" id="16_svtp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
 atlas = ExtResource("2_8ln24")
@@ -29,6 +40,10 @@ load_path = "res://.godot/imported/LEADERBOARD.png-e20c256b131ce54ff7a4a3c5bb085
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
 texture = SubResource("CompressedTexture2D_rtw2f")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = ExtResource("11_rcqid")
+region = Rect2(26, 30, 174, 165)
+
 [node name="Control" type="Control" unique_id=850465137]
 layout_mode = 3
 anchors_preset = 8
@@ -47,6 +62,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -965.0
+offset_top = -545.0
+offset_right = 955.0
+offset_bottom = 535.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_rtw2f")
@@ -79,6 +98,16 @@ texture_normal = SubResource("AtlasTexture_rtw2f")
 texture_pressed = SubResource("AtlasTexture_oa1go")
 stretch_mode = 0
 
+[node name="CreditsButton" type="TextureButton" parent="." unique_id=2086993075]
+layout_mode = 0
+offset_left = -1060.0
+offset_top = -112.0
+offset_right = -301.0
+offset_bottom = 53.0
+texture_normal = ExtResource("7_lgwnu")
+texture_pressed = ExtResource("8_flqon")
+stretch_mode = 0
+
 [node name="LeaderboardPanel" type="Panel" parent="." unique_id=1941251590]
 layout_mode = 0
 offset_left = 13.0
@@ -97,6 +126,99 @@ theme_override_constants/margin_top = 172
 [node name="ScoresContainer" type="VBoxContainer" parent="LeaderboardPanel/MarginContainer" unique_id=647443491]
 layout_mode = 2
 theme_override_constants/separation = 12
+
+[node name="CreditsPanel" type="Panel" parent="." unique_id=588478745]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreditsPanel" unique_id=946984359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.023529412)
+
+[node name="Panel" type="Panel" parent="CreditsPanel" unique_id=1009292063]
+layout_mode = 0
+offset_left = -455.0
+offset_top = -293.0
+offset_right = 445.0
+offset_bottom = 207.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/Panel" unique_id=1388923893]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+
+[node name="Label creators" type="Label" parent="CreditsPanel/Panel/VBoxContainer" unique_id=1726759241]
+visible = false
+layout_mode = 2
+
+[node name="Wiktoria" type="HBoxContainer" parent="CreditsPanel/Panel/VBoxContainer" unique_id=937266004]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Wiktoria" unique_id=1088343301]
+layout_mode = 2
+texture = ExtResource("9_j7ex8")
+
+[node name="TextureRect" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Wiktoria" unique_id=541015202]
+layout_mode = 2
+texture = ExtResource("10_a8gd2")
+stretch_mode = 5
+
+[node name="Michał" type="HBoxContainer" parent="CreditsPanel/Panel/VBoxContainer" unique_id=53235253]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Michał" unique_id=2115975483]
+layout_mode = 2
+texture = ExtResource("7_tbmy8")
+
+[node name="TextureRect" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Michał" unique_id=1784775410]
+layout_mode = 2
+texture = ExtResource("8_jk1qb")
+stretch_mode = 5
+
+[node name="Radek" type="HBoxContainer" parent="CreditsPanel/Panel/VBoxContainer" unique_id=1627707749]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Radek" unique_id=1793757889]
+layout_mode = 2
+texture = ExtResource("13_hstxw")
+
+[node name="TextureRect" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Radek" unique_id=383392588]
+layout_mode = 2
+texture = ExtResource("14_8egab")
+stretch_mode = 5
+
+[node name="Dawid" type="HBoxContainer" parent="CreditsPanel/Panel/VBoxContainer" unique_id=501691509]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Dawid" unique_id=352005865]
+layout_mode = 2
+texture = ExtResource("15_gw5y6")
+
+[node name="TextureRect" type="TextureRect" parent="CreditsPanel/Panel/VBoxContainer/Dawid" unique_id=2064779496]
+layout_mode = 2
+texture = ExtResource("16_svtp6")
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="CreditsPanel" unique_id=1987623271]
+layout_mode = 0
+offset_left = 371.99994
+offset_top = -292.00003
+offset_right = 545.99994
+offset_bottom = -127.00003
+scale = Vector2(0.4, 0.4)
+texture_normal = SubResource("AtlasTexture_lgwnu")
+stretch_mode = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=139566373]
 visible = false
@@ -136,6 +258,8 @@ text = "Ustawienia"
 
 [connection signal="pressed" from="grafika start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="grafika ustawienia" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CreditsPanel/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/przycisk start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/przycisk tabela wynikow" to="." method="_on_scores_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/przycisk ustawienia" to="." method="_on_settings_button_pressed"]

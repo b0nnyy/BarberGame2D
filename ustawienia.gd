@@ -1,5 +1,7 @@
 extends Control
 
+signal back_pressed
+
 # przyciski
 @onready var muzyka_button = $VBoxContainer/MusicRow/Muzyka
 @onready var dzwieki_button = $VBoxContainer/SfxRow/Dzwieki
@@ -9,8 +11,10 @@ extends Control
 @onready var dzwieki_icon = $VBoxContainer/SfxRow/DzwiekiIcon
 
 
-
 func _ready():
+	# Działa i w menu głównym, i podczas pauzy w grze
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_update_icons()
 
 	var music_bus = AudioServer.get_bus_index("Music")
@@ -24,6 +28,22 @@ func _ready():
 
 	if not dzwieki_button.pressed.is_connected(_on_Dzwieki_pressed):
 		dzwieki_button.pressed.connect(_on_Dzwieki_pressed)
+
+
+func _input(event):
+
+	if not visible:
+		return
+
+	if event.is_action_pressed("ui_cancel"):
+		AudioManager.play_sfx("res://sounds/buttonpress.wav")
+
+		if get_tree().paused:
+			back_pressed.emit()
+		else:
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+		get_viewport().set_input_as_handled()
 
 
 # kliknięcie MUZYKA
@@ -68,7 +88,11 @@ func _update_icons():
 		dzwieki_icon.texture = preload("res://Art/icons/ikony menu/SOUNDOFF.png")
 
 
-# POWRÓT DO MENU
+# POWRÓT
 func _on_Powrot_pressed():
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+	if get_tree().paused:
+		back_pressed.emit()
+	else:
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
