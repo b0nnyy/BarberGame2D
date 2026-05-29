@@ -21,9 +21,28 @@
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
 [ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
-[ext_resource type="Texture2D" uid="uid://m05wv1b8pamk" path="res://Art/icons/Dartboard icons/10.png" id="20_hs06j"]
-[ext_resource type="Texture2D" uid="uid://utam2ym2xmit" path="res://Art/icons/Dartboard icons/25.png" id="21_eedq8"]
-[ext_resource type="Texture2D" uid="uid://dpx4s5mp6wbq" path="res://Art/icons/Dartboard icons/50.png" id="22_2lios"]
+[ext_resource type="Texture2D" uid="uid://b2eo20qacf3t8" path="res://Art/icons/Dartboard icons/icon_1.png" id="21_xvrkn"]
+[ext_resource type="Texture2D" uid="uid://u5uv03q2pvht" path="res://Art/icons/Dartboard icons/icon_2.png" id="22_pj3kk"]
+[ext_resource type="Texture2D" uid="uid://dumtdtob40le3" path="res://Art/icons/Dartboard icons/icon_3.png" id="23_wclrm"]
+[ext_resource type="Texture2D" uid="uid://iajivtef6ty5" path="res://Art/icons/Dartboard icons/icon_4.png" id="24_sf5ue"]
+[ext_resource type="Texture2D" uid="uid://chl6245bri7cb" path="res://Art/icons/Dartboard icons/icon_5.png" id="25_kuxdo"]
+[ext_resource type="Texture2D" uid="uid://35d1nn5ln5cj" path="res://Art/icons/Dartboard icons/icon_6.png" id="26_i1r6h"]
+[ext_resource type="Texture2D" uid="uid://cmethe76f0pxe" path="res://Art/icons/Dartboard icons/icon_7.png" id="27_lx5kq"]
+[ext_resource type="Texture2D" uid="uid://dr88volwcrj1u" path="res://Art/icons/Dartboard icons/icon_8.png" id="28_rfby8"]
+[ext_resource type="Texture2D" uid="uid://ddcu873o25sjk" path="res://Art/icons/Dartboard icons/icon_9.png" id="29_ehpvv"]
+[ext_resource type="Texture2D" uid="uid://nm27ygj288sh" path="res://Art/icons/Dartboard icons/icon_10.png" id="30_xugiy"]
+[ext_resource type="Texture2D" uid="uid://dkawwjequroa6" path="res://Art/icons/Dartboard icons/icon_11.png" id="31_poe7l"]
+[ext_resource type="Texture2D" uid="uid://th40a3q0pch" path="res://Art/icons/Dartboard icons/icon_12.png" id="32_v81x0"]
+[ext_resource type="Texture2D" uid="uid://c2fr7d4mb5w4t" path="res://Art/icons/Dartboard icons/icon_13.png" id="33_huual"]
+[ext_resource type="Texture2D" uid="uid://j7iu1w1ivsf6" path="res://Art/icons/Dartboard icons/icon_14.png" id="34_bs611"]
+[ext_resource type="Texture2D" uid="uid://didfae1er66n6" path="res://Art/icons/Dartboard icons/icon_15.png" id="35_jh62o"]
+[ext_resource type="Texture2D" uid="uid://bbmhgm7313ea6" path="res://Art/icons/Dartboard icons/icon_16.png" id="36_wu8wl"]
+[ext_resource type="Texture2D" uid="uid://bv0t34jrphfm3" path="res://Art/icons/Dartboard icons/icon_17.png" id="37_8d4ky"]
+[ext_resource type="Texture2D" uid="uid://uiysrhynwusk" path="res://Art/icons/Dartboard icons/icon_18.png" id="38_4oadv"]
+[ext_resource type="Texture2D" uid="uid://bj46dc53hlpt2" path="res://Art/icons/Dartboard icons/icon_19.png" id="39_loebq"]
+[ext_resource type="Texture2D" uid="uid://dwlfnat3a7wpm" path="res://Art/icons/Dartboard icons/icon_20.png" id="40_vt353"]
+[ext_resource type="Texture2D" uid="uid://dnvfikqjj6sx7" path="res://Art/icons/Dartboard icons/icon_25.png" id="41_d2g7s"]
+[ext_resource type="Texture2D" uid="uid://bluxq7u65emdt" path="res://Art/icons/Dartboard icons/icon_50.png" id="42_p1bjp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ru0d3"]
 vertices = PackedVector2Array(643.3281, 585.6094, 782.5469, 500.53906, 858.9297, 487.8125, 858.03906, 640.64844, 786.4375, 653.77344, 617.46094, 663.2422, 634.96094, 724.9922, 792.60156, 748.5703, 725, 1005.8672, 945.3594, 1008.85156, 943.6094, 1037, 686.7969, 1037, 683.7969, 890, 725, 883.7578, 809.7578, 825.0781, 536.28125, 890, 539.7578, 759.96094, 615.46094, 751.4531, 878, 752.53906, 878, 823.25)
@@ -388,9 +407,28 @@ position = Vector2(368, 437.00003)
 scale = Vector2(1.946785, 5.14788)
 dart_ui = NodePath("../CanvasLayer")
 result_icon = NodePath("../ResultIcon")
-icon_10 = ExtResource("20_hs06j")
-icon_25 = ExtResource("21_eedq8")
-icon_50 = ExtResource("22_2lios")
+icon_1 = ExtResource("21_xvrkn")
+icon_2 = ExtResource("22_pj3kk")
+icon_3 = ExtResource("23_wclrm")
+icon_4 = ExtResource("24_sf5ue")
+icon_5 = ExtResource("25_kuxdo")
+icon_6 = ExtResource("26_i1r6h")
+icon_7 = ExtResource("27_lx5kq")
+icon_8 = ExtResource("28_rfby8")
+icon_9 = ExtResource("29_ehpvv")
+icon_10 = ExtResource("30_xugiy")
+icon_11 = ExtResource("31_poe7l")
+icon_12 = ExtResource("32_v81x0")
+icon_13 = ExtResource("33_huual")
+icon_14 = ExtResource("34_bs611")
+icon_15 = ExtResource("35_jh62o")
+icon_16 = ExtResource("36_wu8wl")
+icon_17 = ExtResource("37_8d4ky")
+icon_18 = ExtResource("38_4oadv")
+icon_19 = ExtResource("39_loebq")
+icon_20 = ExtResource("40_vt353")
+icon_25 = ExtResource("41_d2g7s")
+icon_50 = ExtResource("42_p1bjp")
 
 [node name="CanvasLayer" parent="." unique_id=787037077 instance=ExtResource("16_fhklm")]
 visible = false

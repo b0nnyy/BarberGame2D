@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m05wv1b8pamk"
-path="res://.godot/imported/10.png-097dea7ba9a998d9ef42539d98cf79d7.ctex"
+uid="uid://bj46dc53hlpt2"
+path="res://.godot/imported/icon_19.png-92f7f7e81028565fefa7ebbb262f5f13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/icons/Dartboard icons/10.png"
-dest_files=["res://.godot/imported/10.png-097dea7ba9a998d9ef42539d98cf79d7.ctex"]
+source_file="res://Art/icons/Dartboard icons/icon_19.png"
+dest_files=["res://.godot/imported/icon_19.png-92f7f7e81028565fefa7ebbb262f5f13.ctex"]
 
 [params]
 
