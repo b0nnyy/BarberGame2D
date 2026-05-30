@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
 [ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
+[ext_resource type="Texture2D" uid="uid://c4j2s1bwj827o" path="res://Art/icons/ikony menu/2/RESTART.png" id="19_wclrm"]
+[ext_resource type="Texture2D" uid="uid://ddv5riwba0u3t" path="res://Art/icons/ikony menu/2/RESTART OC.png" id="20_sf5ue"]
 [ext_resource type="Texture2D" uid="uid://b2eo20qacf3t8" path="res://Art/icons/Dartboard icons/icon_1.png" id="21_xvrkn"]
 [ext_resource type="Texture2D" uid="uid://u5uv03q2pvht" path="res://Art/icons/Dartboard icons/icon_2.png" id="22_pj3kk"]
 [ext_resource type="Texture2D" uid="uid://dumtdtob40le3" path="res://Art/icons/Dartboard icons/icon_3.png" id="23_wclrm"]
@@ -354,23 +356,18 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="Panel" type="Panel" parent="UI/GameOverMenu" unique_id=390885368]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+self_modulate = Color(0.012617188, 0.012617188, 0.012617188, 0)
+layout_mode = 0
+offset_left = 90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = -90.0
+scale = Vector2(1.5, 1.5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverMenu/Panel" unique_id=320139259]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 128.0
+offset_bottom = 154.0
 
 [node name="GameOverLabel" type="Label" parent="UI/GameOverMenu/Panel/VBoxContainer" unique_id=370590915]
 layout_mode = 2
@@ -387,16 +384,22 @@ placeholder_text = "Zapisz wynik"
 [node name="SaveScoreButton" type="Button" parent="UI/GameOverMenu/Panel/VBoxContainer" unique_id=1623988450]
 layout_mode = 2
 
-[node name="RestartButton" type="Button" parent="UI/GameOverMenu/Panel/VBoxContainer" unique_id=696637324]
+[node name="RestartButton" type="TextureButton" parent="UI/GameOverMenu/Panel/VBoxContainer" unique_id=146643531]
 process_mode = 2
 layout_mode = 2
-text = "Restart"
+texture_normal = ExtResource("19_wclrm")
+texture_pressed = ExtResource("20_sf5ue")
 
-[node name="ExitButton" type="TextureButton" parent="UI/GameOverMenu/Panel/VBoxContainer" unique_id=83168531]
+[node name="ExitButton" type="TextureButton" parent="UI/GameOverMenu" unique_id=83168531]
 process_mode = 2
-layout_mode = 2
+layout_mode = 0
+offset_left = 417.0
+offset_top = 650.0
+offset_right = 703.0
+offset_bottom = 703.0
 texture_normal = SubResource("AtlasTexture_jnvy2")
 texture_pressed = SubResource("AtlasTexture_ru0d3")
+stretch_mode = 0
 
 [node name="Pies" parent="." unique_id=1020205980 instance=ExtResource("14_yrxkd")]
 position = Vector2(599, 713)
@@ -442,4 +445,4 @@ position = Vector2(368, 361)
 [connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Powrot" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton" to="." method="_on_save_score_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/GameOverMenu/ExitButton" to="." method="_on_exit_button_pressed"]

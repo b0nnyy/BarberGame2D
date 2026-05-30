@@ -12,7 +12,14 @@ var character_order = ["Lukasz", "LukaszB", "Patryk", "Shimmy", "Igor"]
 
 @onready var hbox = $HBoxContainer
 
+var fade_canvas: CanvasLayer
+var fade_layer: ColorRect
+var is_changing_scene := false
+
+
 func _ready():
+	_create_fade_layer()
+
 	for child in hbox.get_children():
 		child.queue_free()
 
@@ -26,6 +33,32 @@ func _ready():
 	hbox.offset_left = 120
 	hbox.offset_right = -1380
 	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
+
+
+func _create_fade_layer():
+	# CanvasLayer sprawia, że fade jest nad całym ekranem,
+	# niezależnie od rozmiaru głównego Controla.
+	fade_canvas = CanvasLayer.new()
+	fade_canvas.name = "FadeCanvas"
+	fade_canvas.layer = 100
+	add_child(fade_canvas)
+
+	fade_layer = ColorRect.new()
+	fade_layer.name = "FadeLayer"
+	fade_layer.color = Color(0, 0, 0, 0)
+	fade_canvas.add_child(fade_layer)
+
+	# Ręcznie ustawiamy rozmiar na cały viewport.
+	fade_layer.position = Vector2.ZERO
+	fade_layer.size = get_viewport_rect().size
+
+	fade_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade_layer.visible = true
+
+
+func _notification(what):
+	if what == NOTIFICATION_RESIZED and fade_layer:
+		fade_layer.size = get_viewport_rect().size
 
 
 func _make_card(char_name: String) -> VBoxContainer:
@@ -76,6 +109,20 @@ func _make_card(char_name: String) -> VBoxContainer:
 
 
 func _start_game(char_name: String):
+	if is_changing_scene:
+		return
+
+	is_changing_scene = true
+
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 	GameData.wybrana_postac = char_name
+
+	# Blokuje kliknięcia podczas fade out.
+	fade_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	var tween = create_tween()
+	tween.tween_property(fade_layer, "color:a", 1.0, 0.6)
+
+	await tween.finished
+
 	get_tree().change_scene_to_file("res://Levels/d_level_salon_01.tscn")

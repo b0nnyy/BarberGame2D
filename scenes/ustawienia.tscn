@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cs7t7s5vcbp1o"]
 
 [ext_resource type="Script" uid="uid://eihfha7n240y" path="res://ustawienia.gd" id="1_01rqy"]
+[ext_resource type="Texture2D" uid="uid://byvekxkurbdm" path="res://Art/menu/BACKGROUND.png" id="2_8p3c5"]
 [ext_resource type="Texture2D" uid="uid://dwk6exrk8lt5l" path="res://Art/icons/ikony menu/SETTINGS BUTTONS.png" id="2_ls2nd"]
 [ext_resource type="Texture2D" uid="uid://beg2vg8rleusa" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCM.png" id="3_iktep"]
 [ext_resource type="Texture2D" uid="uid://dwe1jln6xh0ak" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCS.png" id="3_ykgsm"]
@@ -47,6 +48,20 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("1_01rqy")
+
+[node name="Background" type="TextureRect" parent="." unique_id=457159363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -195.0
+offset_right = 1894.0
+offset_bottom = 885.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8p3c5")
+stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=333097521]
 layout_mode = 0

@@ -2,6 +2,8 @@ extends Control
 
 @onready var scores_container = $LeaderboardPanel/MarginContainer/ScoresContainer
 
+const FONT_PRESS_START = preload("res://Art/icons/ikony menu/2/PressStart2P-Regular.ttf")
+
 
 func _ready():
 	show_scores()
@@ -13,6 +15,9 @@ func show_scores():
 	for child in scores_container.get_children():
 		child.queue_free()
 
+	# większy odstęp pionowy między wynikami
+	scores_container.add_theme_constant_override("separation", 14)
+
 	# max 10 wyników
 	var max_scores = min(10, LeaderboardManager.scores.size())
 
@@ -23,26 +28,38 @@ func show_scores():
 		# ===== WIERSZ (kolumny) =====
 		var row = HBoxContainer.new()
 		row.alignment = BoxContainer.ALIGNMENT_CENTER
-		row.add_theme_constant_override("separation", 25)
+
+		# większy odstęp między danymi w jednym wierszu
+		row.add_theme_constant_override("separation", 40)
+
+		# większa wysokość wiersza
+		row.custom_minimum_size.y = 42
 
 		# ===== RANK =====
 		var rank_label = Label.new()
 		rank_label.text = str(i + 1) + "."
-		rank_label.custom_minimum_size.x = 50
+		rank_label.custom_minimum_size.x = 70
 		rank_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		rank_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 		# ===== NAME =====
 		var name_label = Label.new()
 		name_label.text = entry["name"]
-		name_label.custom_minimum_size.x = 200
+		name_label.custom_minimum_size.x = 260
 		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 		# ===== SCORE =====
 		var score_label = Label.new()
 		score_label.text = str(entry["score"]) + " pkt"
-		score_label.custom_minimum_size.x = 120
+		score_label.custom_minimum_size.x = 170
 		score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		score_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+		# ===== CZCIONKA DLA CAŁEGO WIERSZA =====
+		for label in [rank_label, name_label, score_label]:
+			label.add_theme_font_override("font", FONT_PRESS_START)
 
 		# ===== TOP 3 STYLE =====
 		if i == 0:
@@ -50,9 +67,9 @@ func show_scores():
 			name_label.add_theme_color_override("font_color", Color.GOLD)
 			score_label.add_theme_color_override("font_color", Color.GOLD)
 
-			rank_label.add_theme_font_size_override("font_size", 30)
-			name_label.add_theme_font_size_override("font_size", 30)
-			score_label.add_theme_font_size_override("font_size", 30)
+			rank_label.add_theme_font_size_override("font_size", 26)
+			name_label.add_theme_font_size_override("font_size", 26)
+			score_label.add_theme_font_size_override("font_size", 26)
 
 		elif i == 1:
 			var silver = Color.SILVER
@@ -61,9 +78,9 @@ func show_scores():
 			name_label.add_theme_color_override("font_color", silver)
 			score_label.add_theme_color_override("font_color", silver)
 
-			rank_label.add_theme_font_size_override("font_size", 28)
-			name_label.add_theme_font_size_override("font_size", 28)
-			score_label.add_theme_font_size_override("font_size", 28)
+			rank_label.add_theme_font_size_override("font_size", 24)
+			name_label.add_theme_font_size_override("font_size", 24)
+			score_label.add_theme_font_size_override("font_size", 24)
 
 		elif i == 2:
 			var bronze = Color(0.8, 0.5, 0.2)
@@ -72,14 +89,18 @@ func show_scores():
 			name_label.add_theme_color_override("font_color", bronze)
 			score_label.add_theme_color_override("font_color", bronze)
 
-			rank_label.add_theme_font_size_override("font_size", 26)
-			name_label.add_theme_font_size_override("font_size", 26)
-			score_label.add_theme_font_size_override("font_size", 26)
-
-		else:
 			rank_label.add_theme_font_size_override("font_size", 22)
 			name_label.add_theme_font_size_override("font_size", 22)
 			score_label.add_theme_font_size_override("font_size", 22)
+
+		else:
+			rank_label.add_theme_color_override("font_color", Color.WHITE)
+			name_label.add_theme_color_override("font_color", Color.WHITE)
+			score_label.add_theme_color_override("font_color", Color.WHITE)
+
+			rank_label.add_theme_font_size_override("font_size", 20)
+			name_label.add_theme_font_size_override("font_size", 20)
+			score_label.add_theme_font_size_override("font_size", 20)
 
 		# ===== DODANIE DO WIERSZA =====
 		row.add_child(rank_label)
@@ -107,11 +128,15 @@ func _on_scores_pressed():
 	# pokaz/ukryj tabelę wyników
 	$LeaderboardPanel.visible = !$LeaderboardPanel.visible
 
+func _on_exit_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	get_tree().quit()
+
 func _on_credits_button_pressed():
 
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 
-	$CreditsPanel.visible = true
+	get_tree().change_scene_to_file("res://levels/credits.tscn")
 
 
 func _on_close_button_pressed():

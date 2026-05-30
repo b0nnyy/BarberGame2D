@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dvx1rpbutmf65"]
+
+[ext_resource type="Script" uid="uid://gbpbx8ndgwva" path="res://credits.gd" id="1_yw7nb"]
+[ext_resource type="Texture2D" uid="uid://byvekxkurbdm" path="res://Art/menu/BACKGROUND.png" id="2_2dhbx"]
+[ext_resource type="Texture2D" uid="uid://djw2amxr7gn1k" path="res://Art/icons/ikony menu/LOGO TEKST.png" id="3_wtsbh"]
+[ext_resource type="Texture2D" uid="uid://dc0nrqjd5nbag" path="res://Art/icons/ikony menu/LOGO ZNAK.png" id="4_vj81l"]
+[ext_resource type="Texture2D" uid="uid://cpu5y23g3uu41" path="res://Art/icons/ikony menu/2/X.png" id="5_3fpr1"]
+[ext_resource type="Texture2D" uid="uid://1p05ixqkcn5j" path="res://Art/icons/ikony menu/2/X_OC.png" id="6_7ypxa"]
+
+[node name="Control" type="Control" unique_id=1198882514]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 81.0
+offset_right = 68.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yw7nb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1721291087]
+layout_mode = 0
+offset_left = -864.0
+offset_top = -861.0
+offset_right = -824.0
+offset_bottom = -821.0
+scale = Vector2(95.086334, 75.78845)
+color = Color(0.34781694, 0.34781697, 0.3478169, 1)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=839320986]
+position = Vector2(888.25, 458.12506)
+scale = Vector2(1.0205728, 1.0053241)
+texture = ExtResource("2_2dhbx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1298886613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.3629775, 2.3629775)
+alignment = 1
+
+[node name="LogoTekst" type="Sprite2D" parent="." unique_id=2115232094]
+position = Vector2(1039, 102.00001)
+scale = Vector2(10.843318, 11.1171875)
+texture = ExtResource("3_wtsbh")
+
+[node name="LogoZnak" type="Sprite2D" parent="." unique_id=2119738695]
+position = Vector2(439, 111)
+scale = Vector2(6.0156245, 5.57899)
+texture = ExtResource("4_vj81l")
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=995136688]
+layout_mode = 0
+offset_left = 1536.0
+offset_top = -58.99999
+offset_right = 2203.5
+offset_bottom = 533.5
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("5_3fpr1")
+texture_pressed = ExtResource("6_7ypxa")
+stretch_mode = 0
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
