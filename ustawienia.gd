@@ -43,7 +43,7 @@ func _input(event):
 		else:
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
-		get_viewport().set_input_as_handled()
+		accept_event()
 
 
 # kliknięcie MUZYKA
@@ -96,3 +96,42 @@ func _on_Powrot_pressed():
 		back_pressed.emit()
 	else:
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+
+func _on_button_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1280, 720))
+	_center_window()
+
+
+func _on_button_3_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	_center_window()
+
+
+func _on_button_2_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1600, 900))
+	_center_window()
+
+
+func _on_button_4_pressed() -> void:
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		_center_window()
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+func _center_window():
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = DisplayServer.window_get_size()
+
+	DisplayServer.window_set_position(
+		Vector2i(
+			int((screen_size.x - window_size.x) * 0.5),
+			int((screen_size.y - window_size.y) * 0.5)
+		)
+	)

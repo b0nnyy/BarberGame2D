@@ -144,3 +144,36 @@ func _on_close_button_pressed():
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 
 	$CreditsPanel.visible = false
+
+func _on_res_1280_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	DisplayServer.window_set_size(Vector2i(1280, 720))
+	_center_window()
+
+func _on_res_1600_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	DisplayServer.window_set_size(Vector2i(1600, 900))
+	_center_window()
+
+func _on_res_1920_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	_center_window()
+
+func _on_fullscreen_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		_center_window()
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+func _on_settings_close_pressed():
+	AudioManager.play_sfx("res://sounds/buttonpress.wav")
+	$SettingsPanel.visible = false
+
+func _center_window():
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = DisplayServer.window_get_size()
+	DisplayServer.window_set_position((screen_size - window_size) / 2)

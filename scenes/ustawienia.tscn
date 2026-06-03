@@ -109,6 +109,39 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ResRow" type="VBoxContainer" parent="." unique_id=1878833320]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 212.0
+offset_right = 51.0
+offset_bottom = 295.0
+scale = Vector2(2.5162249, 2.5162249)
+
+[node name="Label" type="Label" parent="ResRow" unique_id=1100531723]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Rozdzielczość"
+
+[node name="Button" type="Button" parent="ResRow" unique_id=519833570]
+layout_mode = 2
+text = "1280x720"
+
+[node name="Button2" type="Button" parent="ResRow" unique_id=627891558]
+layout_mode = 2
+text = "1600x900	"
+
+[node name="Button3" type="Button" parent="ResRow" unique_id=703118613]
+layout_mode = 2
+text = "1920x1080"
+
+[node name="Button4" type="Button" parent="ResRow" unique_id=1014219488]
+layout_mode = 2
+text = "Fullscreen"
+
 [connection signal="pressed" from="VBoxContainer/MusicRow/Muzyka" to="." method="_on_Muzyka_pressed"]
 [connection signal="pressed" from="VBoxContainer/SfxRow/Dzwieki" to="." method="_on_Dzwieki_pressed"]
 [connection signal="pressed" from="VBoxContainer/Powrot" to="." method="_on_Powrot_pressed"]
+[connection signal="pressed" from="ResRow/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ResRow/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ResRow/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="ResRow/Button4" to="." method="_on_button_4_pressed"]
