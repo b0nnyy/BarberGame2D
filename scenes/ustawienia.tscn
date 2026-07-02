@@ -5,8 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://dwk6exrk8lt5l" path="res://Art/icons/ikony menu/SETTINGS BUTTONS.png" id="2_ls2nd"]
 [ext_resource type="Texture2D" uid="uid://beg2vg8rleusa" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCM.png" id="3_iktep"]
 [ext_resource type="Texture2D" uid="uid://dwe1jln6xh0ak" path="res://Art/icons/ikony menu/SETTINGS BUTTONS OCS.png" id="3_ykgsm"]
+[ext_resource type="Texture2D" uid="uid://cv1eneqwyphli" path="res://Art/menu/settings buttons/RESOLUTION OC.png" id="4_nmhun"]
 [ext_resource type="Texture2D" uid="uid://c6e5idcbq0ss0" path="res://Art/icons/ikony menu/SETTINGS.png" id="5_8rv77"]
 [ext_resource type="Texture2D" uid="uid://dntygy1iv3rkj" path="res://Art/icons/ikony menu/EXIT.png" id="6_8p3c5"]
+[ext_resource type="Texture2D" uid="uid://cpj8rac07a2l5" path="res://Art/menu/settings buttons/FULLSCREEN.png" id="8_3en3k"]
+[ext_resource type="Texture2D" uid="uid://caak2qpy248yb" path="res://Art/menu/settings buttons/1280x720.png" id="8_gihl4"]
+[ext_resource type="Texture2D" uid="uid://c56dsp35d2qxk" path="res://Art/menu/settings buttons/RESOLUTION.png" id="8_ymdfs"]
+[ext_resource type="Texture2D" uid="uid://btxwcguil5tq0" path="res://Art/menu/settings buttons/FULLSCREEN OC.png" id="9_n38sy"]
+[ext_resource type="Texture2D" uid="uid://ck2q5tkwqk0oe" path="res://Art/menu/settings buttons/1280x720 OC 2.png" id="9_ymdfs"]
+[ext_resource type="Texture2D" uid="uid://sie6tsgs4mwt" path="res://Art/menu/settings buttons/1600x900.png" id="10_nmhun"]
+[ext_resource type="Texture2D" uid="uid://403p5q7ys1um" path="res://Art/menu/settings buttons/1600x900 OC.png" id="11_dhu3h"]
+[ext_resource type="Texture2D" uid="uid://biesvgsfhnmen" path="res://Art/menu/settings buttons/1920x1080.png" id="12_xa1jm"]
+[ext_resource type="Texture2D" uid="uid://p7ebsi8o4i2u" path="res://Art/menu/settings buttons/1920x1080 OC.png" id="13_kmn53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iktep"]
 atlas = ExtResource("2_ls2nd")
@@ -32,6 +42,46 @@ region = Rect2(29, 79, 71, 17)
 atlas = ExtResource("6_8p3c5")
 region = Rect2(29, 80, 71, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmhun"]
+atlas = ExtResource("8_ymdfs")
+region = Rect2(21, 7, 86, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhu3h"]
+atlas = ExtResource("4_nmhun")
+region = Rect2(21, 7, 86, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa1jm"]
+atlas = ExtResource("8_gihl4")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmn53"]
+atlas = ExtResource("9_ymdfs")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njadl"]
+atlas = ExtResource("10_nmhun")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3r4v"]
+atlas = ExtResource("11_dhu3h")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vybhp"]
+atlas = ExtResource("12_xa1jm")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6yfx"]
+atlas = ExtResource("13_kmn53")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaode"]
+atlas = ExtResource("8_3en3k")
+region = Rect2(20, 7, 88, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rppsx"]
+atlas = ExtResource("9_n38sy")
+region = Rect2(20, 7, 88, 17)
+
 [node name="Control" type="Control" unique_id=1214222620]
 process_mode = 3
 layout_mode = 3
@@ -54,14 +104,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -26.0
-offset_top = -195.0
-offset_right = 1894.0
-offset_bottom = 885.0
+offset_left = -50.0
+offset_top = -209.0
+offset_right = 2060.0
+offset_bottom = 954.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8p3c5")
 stretch_mode = 6
+
+[node name="ResRow" type="VBoxContainer" parent="." unique_id=1477311170]
+layout_mode = 0
+offset_left = -52.0
+offset_top = 227.14441
+offset_right = 1028.4453
+offset_bottom = 403.1444
+scale = Vector2(2.5162249, 2.5162249)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=333097521]
 layout_mode = 0
@@ -97,6 +155,31 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_3en3k")
 texture_pressed = SubResource("AtlasTexture_n38sy")
 
+[node name="resolution" type="TextureButton" parent="VBoxContainer" unique_id=385108261]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_nmhun")
+texture_pressed = SubResource("AtlasTexture_dhu3h")
+
+[node name="Button" type="TextureButton" parent="VBoxContainer" unique_id=690815497]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_xa1jm")
+texture_pressed = SubResource("AtlasTexture_kmn53")
+
+[node name="Button2" type="TextureButton" parent="VBoxContainer" unique_id=2135602087]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_njadl")
+texture_pressed = SubResource("AtlasTexture_a3r4v")
+
+[node name="Button3" type="TextureButton" parent="VBoxContainer" unique_id=875470046]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_vybhp")
+texture_pressed = SubResource("AtlasTexture_p6yfx")
+
+[node name="Button4" type="TextureButton" parent="VBoxContainer" unique_id=2013282075]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_eaode")
+texture_pressed = SubResource("AtlasTexture_rppsx")
+
 [node name="TextureButton" type="TextureButton" parent="." unique_id=11005751]
 visible = false
 layout_mode = 0
@@ -109,39 +192,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ResRow" type="VBoxContainer" parent="." unique_id=1878833320]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 212.0
-offset_right = 51.0
-offset_bottom = 295.0
-scale = Vector2(2.5162249, 2.5162249)
-
-[node name="Label" type="Label" parent="ResRow" unique_id=1100531723]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Rozdzielczość"
-
-[node name="Button" type="Button" parent="ResRow" unique_id=519833570]
-layout_mode = 2
-text = "1280x720"
-
-[node name="Button2" type="Button" parent="ResRow" unique_id=627891558]
-layout_mode = 2
-text = "1600x900	"
-
-[node name="Button3" type="Button" parent="ResRow" unique_id=703118613]
-layout_mode = 2
-text = "1920x1080"
-
-[node name="Button4" type="Button" parent="ResRow" unique_id=1014219488]
-layout_mode = 2
-text = "Fullscreen"
-
 [connection signal="pressed" from="VBoxContainer/MusicRow/Muzyka" to="." method="_on_Muzyka_pressed"]
 [connection signal="pressed" from="VBoxContainer/SfxRow/Dzwieki" to="." method="_on_Dzwieki_pressed"]
 [connection signal="pressed" from="VBoxContainer/Powrot" to="." method="_on_Powrot_pressed"]
-[connection signal="pressed" from="ResRow/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ResRow/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="ResRow/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="ResRow/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_button_4_pressed"]

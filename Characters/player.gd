@@ -4,6 +4,10 @@ extends CharacterBody2D
 @onready var heart2 = $HeartBar/HBoxContainer/Heart2
 @onready var heart3 = $HeartBar/HBoxContainer/Heart3
 @onready var stamina_bar = $StaminaBar
+@onready var footsteps = $Footsteps
+@export var interaction_distance := 80.0
+@export var walk_sound: AudioStream
+@export var sprint_sound: AudioStream
 
 @export var move_speed: float = 100
 @export var sprint_speed: float = 180
@@ -24,13 +28,62 @@ var sprint_cooldown_timer: float = 0.0
 var held_item = null
 
 var characters = {
-	"Lukasz": "res://Characters/lukasz_frames.tres",
+	"Igi": "res://Characters/Igi_frames.tres",
 	"LukaszB": "res://Characters/LukaszB_frames.tres",
 	"Patryk": "res://Characters/Patryk_frames.tres",
 	"Shimmy": "res://Characters/Shimmy_frames.tres",
 	"Igor": "res://Characters/Igor_frames.tres",
 	"Dzony": "res://Characters/Dzony_frames.tres"
 }
+
+func _input(event):
+	if event.is_action_pressed("Interact"):
+		try_give_item()
+
+func try_give_item():
+	if held_item == null:
+		print("NO HELD ITEM")
+		return
+
+	var item = get_interactable_in_front()
+	if item == null:
+		print("NO ITEM")
+		return
+
+	print("GIVING ITEM:", item.name)
+
+	var customer = get_nearest_customer()
+
+	if customer == null:
+		print("NO CUSTOMER")
+		return
+
+	customer.take_item(item)
+
+func get_interactable_in_front():
+	var areas = get_tree().get_nodes_in_group("Interactable")
+
+	for a in areas:
+		if global_position.distance_to(a.global_position) < 80:
+			print("FOUND AREA:", a.name)
+			return a
+
+	return null
+
+func get_nearest_customer():
+	var customers = get_tree().get_nodes_in_group("customers")
+
+	var nearest = null
+	var best_dist = interaction_distance
+
+	for c in customers:
+		var dist = global_position.distance_to(c.global_position)
+
+		if dist < best_dist:
+			best_dist = dist
+			nearest = c
+
+	return nearest
 
 func _ready():  
 	update_hearts()
@@ -69,6 +122,7 @@ func _physics_process(delta):
 	update_stamina(delta, is_sprinting, is_moving)
 	update_sprint_cooldown(delta)
 	update_animation(input_direction)
+	update_footsteps(is_moving, is_sprinting)
 
 	stamina_bar.value = lerp(stamina_bar.value, stamina, 0.2)
 	stamina_bar.max_value = max_stamina
@@ -112,13 +166,27 @@ func attempt_pick_up():
 		
 func pick_up_item(item):
 	held_item = item
+
 	if held_item.get_parent():
 		held_item.get_parent().remove_child(held_item)
+
 	hand.add_child(held_item)
 	held_item.position = Vector2.ZERO
+
 	var shape = held_item.get_node_or_null("CollisionShape2D")
 	if shape:
 		shape.disabled = true
+
+	var item_name = item.name.to_lower()
+
+	if "nozyczki" in item_name:
+		AudioManager.play_sfx("res://sounds/nozyczki.wav")
+	elif "brzytwa" in item_name:
+		AudioManager.play_sfx("res://sounds/brzytwa.wav")
+	elif "golarka" in item_name:
+		AudioManager.play_sfx("res://sounds/golarka.wav")
+	else:
+		AudioManager.play_sfx("res://sounds/sfx/pickup.wav")
 
 func drop_item():
 	if not held_item:
@@ -189,3 +257,20 @@ func update_sprint_cooldown(delta):
 		if sprint_cooldown_timer <= 0:
 			can_sprint = true
 	
+
+func update_footsteps(is_moving: bool, is_sprinting: bool):
+
+	if !is_moving:
+		if footsteps.playing:
+			footsteps.stop()
+		return
+
+	var wanted_sound = sprint_sound if is_sprinting else walk_sound
+
+	if footsteps.stream != wanted_sound:
+		footsteps.stop()
+		footsteps.stream = wanted_sound
+		footsteps.play()
+
+	elif !footsteps.playing:
+		footsteps.play()

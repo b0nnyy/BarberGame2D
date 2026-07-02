@@ -1,12 +1,13 @@
 extends Control
 
 @onready var scores_container = $LeaderboardPanel/MarginContainer/ScoresContainer
-
 const FONT_PRESS_START = preload("res://Art/icons/ikony menu/2/PressStart2P-Regular.ttf")
+
 
 
 func _ready():
 	show_scores()
+	AudioManager.play_music("res://sounds/menu.wav")
 
 
 func show_scores():

@@ -20,6 +20,7 @@ var target_position: Vector2
 var has_target: bool = false
 var exit_position: Vector2
 var requested_service: String = ""
+var current_tool_sound: String = ""
 
 var current_work_progress: int = 0
 
@@ -223,10 +224,15 @@ func take_item(incoming_item):
 
 	if requested_service == "haircut" and item_name.contains("nozyczki"):
 		is_correct = true
+		current_tool_sound = "res://sounds/nozyczki.wav"
+
 	elif requested_service == "beard" and item_name.contains("brzytwa"):
 		is_correct = true
+		current_tool_sound = "res://sounds/brzytwa.wav"
+
 	elif requested_service == "golarka" and item_name.contains("golarka"):
 		is_correct = true
+		current_tool_sound = "res://sounds/golarka.wav"
 
 	if is_correct:
 		perform_work_step()
@@ -235,14 +241,12 @@ func perform_work_step():
 
 	current_work_progress += 1
 
-	if has_node("WorkProgress"):
+	var pitch = 1.0 + (float(current_work_progress) * 0.1)
+	pitch = clamp(pitch, 1.0, 2.0)
 
-		$WorkProgress.visible = true
-		$WorkProgress.value = current_work_progress
-		$WorkProgress.max_value = clicks_required
+	AudioManager.play_sfx(current_tool_sound, pitch)
 
 	var t = create_tween()
-
 	t.tween_property(request_icon, "modulate", Color.GREEN, 0.1)
 	t.tween_property(request_icon, "modulate", Color.WHITE, 0.1)
 
@@ -251,7 +255,7 @@ func perform_work_step():
 
 func finish_and_leave():
 	current_work_progress = 0
-
+	current_tool_sound = ""
 	request_icon.visible = false
 	patience_bar.visible = false
 	show_reaction(true)

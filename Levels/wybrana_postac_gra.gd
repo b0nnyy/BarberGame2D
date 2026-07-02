@@ -16,6 +16,12 @@ extends Node
 @onready var save_button = $UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton
 @onready var restart_button = $UI/GameOverMenu/Panel/VBoxContainer/RestartButton
 @onready var exit_button = $UI/GameOverMenu/ExitButton
+@onready var res_button = $UI/SettingsMenu/VBoxContainer/resolution
+
+@onready var button1 = $UI/SettingsMenu/VBoxContainer/Button
+@onready var button2 = $UI/SettingsMenu/VBoxContainer/Button2
+@onready var button3 = $UI/SettingsMenu/VBoxContainer/Button3
+@onready var button4 = $UI/SettingsMenu/VBoxContainer/Button4
 
 @onready var fade_layer = $UI/FadeLayer
 
@@ -44,7 +50,7 @@ var name_box: Control
 
 var tutorial_canvas: CanvasLayer
 var tutorial_panel: Panel
-var tutorial_label: Label
+var tutorial_label: RichTextLabel
 var tutorial_visible := true
 
 var start_fade_canvas: CanvasLayer
@@ -56,7 +62,7 @@ func _ready():
 	fade_layer.visible = false
 
 	print("Wybrana postać to: " + GameData.wybrana_postac)
-
+	AudioManager.play_music("res://sounds/gameplay.wav")
 	pause_menu.resume_pressed.connect(_resume_game)
 	pause_menu.settings_pressed.connect(_open_settings)
 	pause_menu.back_pressed.connect(_close_settings)
@@ -85,6 +91,7 @@ func _ready():
 
 	if not get_viewport().size_changed.is_connected(_on_viewport_size_changed):
 		get_viewport().size_changed.connect(_on_viewport_size_changed)
+
 
 
 # ================= FADE IN NA START =================
@@ -124,51 +131,73 @@ func _create_tutorial():
 	add_child(tutorial_canvas)
 
 	tutorial_panel = Panel.new()
-	tutorial_panel.name = "TutorialPanel"
 	tutorial_canvas.add_child(tutorial_panel)
 
 	tutorial_panel.custom_minimum_size = Vector2(900, 370)
 	tutorial_panel.size = Vector2(900, 370)
-	tutorial_panel.position = (get_viewport().get_visible_rect().size - tutorial_panel.size) / 2.0
+
+	var vp_size := get_viewport().get_visible_rect().size
+	tutorial_panel.position = (vp_size - tutorial_panel.size) * 0.5
+
 	tutorial_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 
-	var panel_style := StyleBoxFlat.new()
-	panel_style.bg_color = Color(0, 0, 0, 0.78)
-	panel_style.border_color = Color.WHITE
-	panel_style.border_width_left = 3
-	panel_style.border_width_right = 3
-	panel_style.border_width_top = 3
-	panel_style.border_width_bottom = 3
-	panel_style.corner_radius_top_left = 12
-	panel_style.corner_radius_top_right = 12
-	panel_style.corner_radius_bottom_left = 12
-	panel_style.corner_radius_bottom_right = 12
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0, 0, 0, 0.78)
+	style.border_color = Color.WHITE
+	style.border_width_left = 3
+	style.border_width_right = 3
+	style.border_width_top = 3
+	style.border_width_bottom = 3
+	style.corner_radius_top_left = 12
+	style.corner_radius_top_right = 12
+	style.corner_radius_bottom_left = 12
+	style.corner_radius_bottom_right = 12
 
-	tutorial_panel.add_theme_stylebox_override("panel", panel_style)
+	tutorial_panel.add_theme_stylebox_override("panel", style)
 
-	tutorial_label = Label.new()
-	tutorial_label.name = "TutorialLabel"
-	tutorial_panel.add_child(tutorial_label)
+	var rtl := RichTextLabel.new()
+	tutorial_label = rtl
+	tutorial_panel.add_child(rtl)
 
-	tutorial_label.set_anchors_preset(Control.PRESET_FULL_RECT)
-	tutorial_label.offset_left = 35
-	tutorial_label.offset_right = -35
-	tutorial_label.offset_top = 25
-	tutorial_label.offset_bottom = -25
+	rtl.set_anchors_preset(Control.PRESET_FULL_RECT)
+	rtl.offset_left = 35
+	rtl.offset_right = -35
+	rtl.offset_top = 25
+	rtl.offset_bottom = -25
 
-	tutorial_label.text = "Press WSAD to move your character\n\nPress E to grab equipment from the table\n\npress SHIFT to sprint\n\nGo to the customer with required item\nand press E three times to gain points\n\nPress any button to continue"
+	rtl.bbcode_enabled = true
+	rtl.scroll_active = false
+	rtl.fit_content = true
+	rtl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	tutorial_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	tutorial_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	tutorial_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	tutorial_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rtl.add_theme_font_override("normal_font", FONT_PRESS_START)
+	rtl.add_theme_font_size_override("normal_font_size", 13)
+	rtl.add_theme_color_override("default_color", Color.WHITE)
 
-	tutorial_label.add_theme_font_override("font", FONT_PRESS_START)
-	tutorial_label.add_theme_font_size_override("font_size", 13)
-	tutorial_label.add_theme_color_override("font_color", Color.WHITE)
+	rtl.text = """
+[center]
+Use arrows to navigate your character
 
-	tutorial_panel.visible = true
+
+
+Press X to grab equipment from the table
+
+
+
+Press Left analog stick to sprint
+
+
+
+Go to the customer with required item and press X three times to gain points
+
+
+
+Press any button to continue
+[/center]
+"""
+
 	tutorial_visible = true
+	tutorial_panel.visible = true
 
 
 func _hide_tutorial():
@@ -351,6 +380,7 @@ func _open_pause():
 # ================= GAME OVER =================
 
 func show_game_over(score):
+	AudioManager.play_music("res://sounds/gameover.wav")
 	last_score = score
 	score_saved = false
 	last_player_name = ""
@@ -380,7 +410,7 @@ func show_game_over(score):
 	t.tween_property(fade_layer, "color:a", 1.0, 1.0)
 
 	await t.finished
-
+	await get_tree().create_timer(3.0).timeout
 	get_tree().paused = true
 
 
@@ -453,6 +483,7 @@ func _open_settings():
 func _close_settings():
 	settings_menu.visible = false
 	pause_menu.visible = true
+
 
 
 func _resume_game():
@@ -599,3 +630,41 @@ func show_leaderboard():
 		scores_container.add_child(player_row)
 
 		animate_leaderboard_row(player_row, delay)
+
+func _on_button_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1280, 720))
+	_center_window()
+
+
+func _on_button_2_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1600, 900))
+	_center_window()
+
+
+func _on_button_3_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	_center_window()
+
+
+func _on_button_4_pressed():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		_center_window()
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func _center_window():
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = DisplayServer.window_get_size()
+
+	DisplayServer.window_set_position(
+		Vector2i(
+			int((screen_size.x - window_size.x) * 0.5),
+			int((screen_size.y - window_size.y) * 0.5)
+		)
+	)

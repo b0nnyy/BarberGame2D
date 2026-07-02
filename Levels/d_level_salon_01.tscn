@@ -21,15 +21,25 @@
 [ext_resource type="PackedScene" uid="uid://crtaapidfw5s3" path="res://scenes/pies.tscn" id="14_yrxkd"]
 [ext_resource type="PackedScene" uid="uid://bjhwmkwmbryoo" path="res://scenes/Dartboard.tscn" id="15_ru0d3"]
 [ext_resource type="PackedScene" uid="uid://eod5e1edk8fi" path="res://scenes/DartUI.tscn" id="16_fhklm"]
+[ext_resource type="Texture2D" uid="uid://c56dsp35d2qxk" path="res://Art/menu/settings buttons/RESOLUTION.png" id="19_huual"]
 [ext_resource type="Texture2D" uid="uid://c4j2s1bwj827o" path="res://Art/icons/ikony menu/2/RESTART.png" id="19_wclrm"]
+[ext_resource type="Texture2D" uid="uid://cv1eneqwyphli" path="res://Art/menu/settings buttons/RESOLUTION OC.png" id="20_bs611"]
 [ext_resource type="Texture2D" uid="uid://ddv5riwba0u3t" path="res://Art/icons/ikony menu/2/RESTART OC.png" id="20_sf5ue"]
+[ext_resource type="Texture2D" uid="uid://caak2qpy248yb" path="res://Art/menu/settings buttons/1280x720.png" id="21_jh62o"]
 [ext_resource type="Texture2D" uid="uid://b2eo20qacf3t8" path="res://Art/icons/Dartboard icons/icon_1.png" id="21_xvrkn"]
 [ext_resource type="Texture2D" uid="uid://u5uv03q2pvht" path="res://Art/icons/Dartboard icons/icon_2.png" id="22_pj3kk"]
+[ext_resource type="Texture2D" uid="uid://ck2q5tkwqk0oe" path="res://Art/menu/settings buttons/1280x720 OC 2.png" id="22_wu8wl"]
+[ext_resource type="Texture2D" uid="uid://sie6tsgs4mwt" path="res://Art/menu/settings buttons/1600x900.png" id="23_8d4ky"]
 [ext_resource type="Texture2D" uid="uid://dumtdtob40le3" path="res://Art/icons/Dartboard icons/icon_3.png" id="23_wclrm"]
+[ext_resource type="Texture2D" uid="uid://403p5q7ys1um" path="res://Art/menu/settings buttons/1600x900 OC.png" id="24_4oadv"]
 [ext_resource type="Texture2D" uid="uid://iajivtef6ty5" path="res://Art/icons/Dartboard icons/icon_4.png" id="24_sf5ue"]
 [ext_resource type="Texture2D" uid="uid://chl6245bri7cb" path="res://Art/icons/Dartboard icons/icon_5.png" id="25_kuxdo"]
+[ext_resource type="Texture2D" uid="uid://biesvgsfhnmen" path="res://Art/menu/settings buttons/1920x1080.png" id="25_loebq"]
 [ext_resource type="Texture2D" uid="uid://35d1nn5ln5cj" path="res://Art/icons/Dartboard icons/icon_6.png" id="26_i1r6h"]
+[ext_resource type="Texture2D" uid="uid://p7ebsi8o4i2u" path="res://Art/menu/settings buttons/1920x1080 OC.png" id="26_vt353"]
+[ext_resource type="Texture2D" uid="uid://cpj8rac07a2l5" path="res://Art/menu/settings buttons/FULLSCREEN.png" id="27_d2g7s"]
 [ext_resource type="Texture2D" uid="uid://cmethe76f0pxe" path="res://Art/icons/Dartboard icons/icon_7.png" id="27_lx5kq"]
+[ext_resource type="Texture2D" uid="uid://btxwcguil5tq0" path="res://Art/menu/settings buttons/FULLSCREEN OC.png" id="28_p1bjp"]
 [ext_resource type="Texture2D" uid="uid://dr88volwcrj1u" path="res://Art/icons/Dartboard icons/icon_8.png" id="28_rfby8"]
 [ext_resource type="Texture2D" uid="uid://ddcu873o25sjk" path="res://Art/icons/Dartboard icons/icon_9.png" id="29_ehpvv"]
 [ext_resource type="Texture2D" uid="uid://nm27ygj288sh" path="res://Art/icons/Dartboard icons/icon_10.png" id="30_xugiy"]
@@ -124,6 +134,46 @@ region = Rect2(29, 79, 71, 17)
 atlas = ExtResource("13_yrxkd")
 region = Rect2(29, 80, 71, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys7ml"]
+atlas = ExtResource("19_huual")
+region = Rect2(21, 7, 86, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjs84"]
+atlas = ExtResource("20_bs611")
+region = Rect2(21, 7, 86, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuopn"]
+atlas = ExtResource("21_jh62o")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irdhu"]
+atlas = ExtResource("22_wu8wl")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yaga"]
+atlas = ExtResource("23_8d4ky")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki6d1"]
+atlas = ExtResource("24_4oadv")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7byw0"]
+atlas = ExtResource("25_loebq")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t54jq"]
+atlas = ExtResource("26_vt353")
+region = Rect2(28, 7, 71, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6ill"]
+atlas = ExtResource("27_d2g7s")
+region = Rect2(20, 7, 88, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bxvs"]
+atlas = ExtResource("28_p1bjp")
+region = Rect2(20, 7, 88, 17)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtw2f"]
 load_path = "res://.godot/imported/LEADERBOARD.png-e20c256b131ce54ff7a4a3c5bb0858d8.ctex"
 
@@ -200,12 +250,16 @@ scale = Vector2(1.339, 1.339)
 position = Vector2(560, 782)
 scale = Vector2(1.339, 1.339)
 
-[node name="Player" parent="." unique_id=1059542811 node_paths=PackedStringArray("dart_ui") groups=["player"] instance=ExtResource("5_ucvr3")]
+[node name="Player" parent="." unique_id=1059542811 groups=["player"] instance=ExtResource("5_ucvr3")]
 position = Vector2(385, 606)
-dart_ui = NodePath("../CanvasLayer")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1294629052]
 remote_path = NodePath("../../Camera2D2")
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="Player" unique_id=1444881844]
+volume_db = -6.804
+attenuation = 0.0947325
+bus = &"SFX"
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=999227116]
 position = Vector2(385, 606)
@@ -326,6 +380,36 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_hs06j")
 texture_pressed = SubResource("AtlasTexture_eedq8")
 
+[node name="resolution" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=742382966]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ys7ml")
+texture_pressed = SubResource("AtlasTexture_qjs84")
+
+[node name="Button" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=1446056722]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_yuopn")
+texture_pressed = SubResource("AtlasTexture_irdhu")
+
+[node name="Button2" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=2062461008]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2yaga")
+texture_pressed = SubResource("AtlasTexture_ki6d1")
+
+[node name="Button3" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=835314099]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_7byw0")
+texture_pressed = SubResource("AtlasTexture_t54jq")
+
+[node name="Button4" type="TextureButton" parent="UI/SettingsMenu/VBoxContainer" unique_id=465793066]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_t6ill")
+texture_pressed = SubResource("AtlasTexture_6bxvs")
+
 [node name="GameOverMenu" type="Control" parent="UI" unique_id=1688469434]
 process_mode = 3
 visible = false
@@ -443,6 +527,10 @@ transform = Transform2D(0.205, 0, 0, 0.205, 367.995, 308.86)
 position = Vector2(368, 361)
 
 [connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Powrot" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="UI/SettingsMenu/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/SaveScoreButton" to="." method="_on_save_score_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/GameOverMenu/ExitButton" to="." method="_on_exit_button_pressed"]

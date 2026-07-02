@@ -10,5 +10,17 @@ script = ExtResource("1_v6v0x")
 stream = ExtResource("1_hux41")
 bus = &"SFX"
 
+[node name="SFXPlayer1" type="AudioStreamPlayer" parent="." unique_id=1406932238]
+bus = &"SFX"
+
+[node name="SFXPlayer2" type="AudioStreamPlayer" parent="." unique_id=12850179]
+bus = &"SFX"
+
+[node name="SFXPlayer3" type="AudioStreamPlayer" parent="." unique_id=319711443]
+bus = &"SFX"
+
+[node name="SFXPlayer4" type="AudioStreamPlayer" parent="." unique_id=385983522]
+bus = &"SFX"
+
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1321755892]
 bus = &"Music"

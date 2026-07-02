@@ -1,14 +1,14 @@
 extends Control
 
 var characters = {
-	"Lukasz":  preload("res://Characters/lukasz_frames.tres"),
+	"Igi":  preload("res://Characters/Igi_frames.tres"),
 	"LukaszB": preload("res://Characters/LukaszB_frames.tres"),
 	"Patryk":  preload("res://Characters/Patryk_frames.tres"),
 	"Shimmy":  preload("res://Characters/Shimmy_frames.tres"),
 	"Igor":    preload("res://Characters/Igor_frames.tres"),
 }
 
-var character_order = ["Lukasz", "LukaszB", "Patryk", "Shimmy", "Igor"]
+var character_order = ["Igi", "LukaszB", "Patryk", "Shimmy", "Igor"]
 
 @onready var hbox = $HBoxContainer
 
@@ -23,7 +23,7 @@ func _ready():
 	for child in hbox.get_children():
 		child.queue_free()
 
-	for char_name in character_order:
+	for char_name in characters.keys():
 		var card = _make_card(char_name)
 		hbox.add_child(card)
 
@@ -36,8 +36,6 @@ func _ready():
 
 
 func _create_fade_layer():
-	# CanvasLayer sprawia, że fade jest nad całym ekranem,
-	# niezależnie od rozmiaru głównego Controla.
 	fade_canvas = CanvasLayer.new()
 	fade_canvas.name = "FadeCanvas"
 	fade_canvas.layer = 100
@@ -48,7 +46,6 @@ func _create_fade_layer():
 	fade_layer.color = Color(0, 0, 0, 0)
 	fade_canvas.add_child(fade_layer)
 
-	# Ręcznie ustawiamy rozmiar na cały viewport.
 	fade_layer.position = Vector2.ZERO
 	fade_layer.size = get_viewport_rect().size
 
@@ -68,9 +65,6 @@ func _make_card(char_name: String) -> VBoxContainer:
 	card.add_theme_constant_override("separation", 16)
 	card.custom_minimum_size = Vector2(160, 240)
 
-	# =========================
-	# PREVIEW POSTACI
-	# =========================
 
 	var frames = characters[char_name]
 	var texture = frames.get_frame_texture("idle_down", 0)
@@ -84,9 +78,6 @@ func _make_card(char_name: String) -> VBoxContainer:
 
 	card.add_child(preview)
 
-	# =========================
-	# PRZYCISK GRAFICZNY
-	# =========================
 
 	var normal_texture = load("res://Art/icons/nazwypostaci/%s.png" % char_name)
 	var pressed_texture = load("res://Art/icons/nazwypostaci/%s_pressed.png" % char_name)
@@ -117,7 +108,6 @@ func _start_game(char_name: String):
 	AudioManager.play_sfx("res://sounds/buttonpress.wav")
 	GameData.wybrana_postac = char_name
 
-	# Blokuje kliknięcia podczas fade out.
 	fade_layer.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	var tween = create_tween()
