@@ -250,8 +250,9 @@ scale = Vector2(1.339, 1.339)
 position = Vector2(560, 782)
 scale = Vector2(1.339, 1.339)
 
-[node name="Player" parent="." unique_id=1059542811 groups=["player"] instance=ExtResource("5_ucvr3")]
+[node name="Player" parent="." unique_id=1059542811 node_paths=PackedStringArray("dart_ui") groups=["player"] instance=ExtResource("5_ucvr3")]
 position = Vector2(385, 606)
+dart_ui = NodePath("../CanvasLayer")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1294629052]
 remote_path = NodePath("../../Camera2D2")
